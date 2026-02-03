@@ -6,7 +6,7 @@ import { Header } from '@/components/header';
 import { trackTopUp } from '@/lib/analytics';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import goldBagImage from '@assets/img_1755139968219.png';
+import { Coins } from 'lucide-react';
 
 // Bid packages data
 const bidPackages = [
@@ -178,13 +178,9 @@ export default function TopUp() {
               )}
 
               <div className="p-6">
-                {/* Gold Coins Bag Image */}
-                <div className="w-24 h-24 mx-auto mb-6 relative">
-                  <img 
-                    src={goldBagImage}
-                    alt="Gold coins bag"
-                    className="w-full h-full object-contain"
-                  />
+                {/* Gold Coins Icon */}
+                <div className="w-24 h-24 mx-auto mb-6 relative flex items-center justify-center bg-gradient-to-br from-yellow-100 to-amber-200 rounded-full">
+                  <Coins className="w-12 h-12 text-amber-600" />
                 </div>
 
                 {/* Package Title */}
