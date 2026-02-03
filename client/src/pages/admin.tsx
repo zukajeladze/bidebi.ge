@@ -1,8 +1,8 @@
-import { Header } from "@/components/header";
-import { AdminPanel } from "@/components/admin-panel";
-import { useAuth } from "@/hooks/use-auth";
-import { useLocation, Link } from "wouter";
-import { useEffect } from "react";
+import { Header } from '@/components/header';
+import { AdminPanel } from '@/components/admin-panel';
+import { useAuth } from '@/hooks/use-auth';
+import { useLocation, Link } from 'wouter';
+import { useEffect } from 'react';
 
 export default function Admin() {
   const { isAdmin, isLoading } = useAuth();
@@ -10,7 +10,7 @@ export default function Admin() {
 
   useEffect(() => {
     if (!isLoading && !isAdmin) {
-      setLocation("/");
+      setLocation('/');
     }
   }, [isAdmin, isLoading, setLocation]);
 
@@ -19,7 +19,7 @@ export default function Admin() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-gray-600">Загрузка...</p>
+          <p className="text-gray-600">ჩათვირთვა...</p>
         </div>
       </div>
     );
@@ -32,17 +32,17 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <main className="max-w-[1504px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900">
             <i className="fas fa-shield-alt text-blue-600 mr-3"></i>
-            Панель администратора
+            ადმინ პანელი
           </h1>
           <p className="text-slate-600 mt-2">
-            Управление аукционами, ботами и системой
+            აუქციონების, ბოტების და სისტემის მართვა
           </p>
-          
+
           {/* Navigation */}
           <div className="mt-6 flex flex-wrap gap-3">
             <div className="flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-lg border border-blue-200">
