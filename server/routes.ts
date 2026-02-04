@@ -24,6 +24,11 @@ const errorMessages = {
     registrationError: "Ошибка регистрации",
     invalidData: "Неверные данные",
     userNotFound: "Пользователь не найден",
+    invalidEmailFormat: "Неверный формат email",
+    emailAvailable: "Email доступен",
+    emailAlreadyRegistered: "Email уже зарегистрирован",
+    usernameAvailable: "Имя пользователя доступно",
+    usernameTaken: "Имя пользователя уже занято",
   },
   en: {
     invalidCredentials: "Invalid credentials",
@@ -32,6 +37,11 @@ const errorMessages = {
     registrationError: "Registration error",
     invalidData: "Invalid data",
     userNotFound: "User not found",
+    invalidEmailFormat: "Invalid email format",
+    emailAvailable: "Email is available",
+    emailAlreadyRegistered: "Email is already registered",
+    usernameAvailable: "Username is available",
+    usernameTaken: "Username is already taken",
   },
   ka: {
     invalidCredentials: "არასწორი სავისე მონაცემები",
@@ -40,6 +50,11 @@ const errorMessages = {
     registrationError: "რეგისტრაციის შეცდომა",
     invalidData: "არასწორი მონაცემები",
     userNotFound: "მომხმარებელი ვერ მოიძებნა",
+    invalidEmailFormat: "არასწორი ელფოსტის ფორმატი",
+    emailAvailable: "ელფოსტა ხელმისაწვდომია",
+    emailAlreadyRegistered: "ელფოსტა უკვე დარეგისტრირებულია",
+    usernameAvailable: "მომხმარებლის სახელი ხელმისაწვდომია",
+    usernameTaken: "მომხმარებლის სახელი უკვე დაკავებულია",
   },
 };
 
@@ -470,17 +485,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.json({ valid: true, message: getErrorMessage(req, 'usernameAvailable') });
     } catch (error: any) {
+      console.error("validate-username error:", error);
       if (error.errors) {
         return res.json({ valid: false, message: error.errors[0].message });
       }
-      res.json({ valid: false, message: "Неверное имя пользователя" });
+      res.json({ valid: false, message: getErrorMessage(req, 'invalidData') });
     }
   });
 
   app.post("/api/auth/validate-email", async (req, res) => {
     try {
       const { email } = req.body;
-      
+
       // Manual email validation to avoid Zod's hardcoded error messages
       if (!email || typeof email !== 'string' || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
         return res.json({ valid: false, message: getErrorMessage(req, 'invalidEmailFormat') });
@@ -493,6 +509,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.json({ valid: true, message: getErrorMessage(req, 'emailAvailable') });
     } catch (error: any) {
+      console.error("validate-email error:", error);
       res.json({ valid: false, message: getErrorMessage(req, 'invalidEmailFormat') });
     }
   });
