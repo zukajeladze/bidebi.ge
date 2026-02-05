@@ -2,11 +2,13 @@ import { Header } from '@/components/header';
 import { AdminPanel } from '@/components/admin-panel';
 import { useAuth } from '@/hooks/use-auth';
 import { useLocation, Link } from 'wouter';
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
+import { useLanguage } from '@/hooks/use-language';
 
 export default function Admin() {
   const { isAdmin, isLoading } = useAuth();
   const [, setLocation] = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!isLoading && !isAdmin) {
@@ -37,28 +39,28 @@ export default function Admin() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900">
             <i className="fas fa-shield-alt text-blue-600 mr-3"></i>
-            ადმინ პანელი
+            {t("adminPanel")}
           </h1>
           <p className="text-slate-600 mt-2">
-            აუქციონების, ბოტების და სისტემის მართვა
+            {t("manageAuctionsBotsSystem")}
           </p>
 
           {/* Navigation */}
           <div className="mt-6 flex flex-wrap gap-3">
             <div className="flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-lg border border-blue-200">
               <i className="fas fa-chart-line mr-2"></i>
-              <span className="font-medium">Аукционы и боты</span>
+              <span className="font-medium">{t("auctionsAndBots")}</span>
             </div>
             <Link href="/admin/settings">
               <div className="flex items-center bg-slate-50 hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200 transition-colors cursor-pointer">
                 <i className="fas fa-cog mr-2"></i>
-                <span className="font-medium">Настройки</span>
+                <span className="font-medium">{t("settings")}</span>
               </div>
             </Link>
             <Link href="/admin/api-docs">
               <div className="flex items-center bg-green-50 hover:bg-green-100 text-green-700 px-4 py-2 rounded-lg border border-green-200 transition-colors cursor-pointer">
                 <i className="fas fa-code mr-2"></i>
-                <span className="font-medium">API Документация</span>
+                <span className="font-medium">{t("apiDocs")}</span>
               </div>
             </Link>
           </div>

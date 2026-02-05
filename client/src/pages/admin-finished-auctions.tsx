@@ -35,7 +35,7 @@ export default function AdminFinishedAuctions() {
   const [selectedAuction, setSelectedAuction] = useState<Auction | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { toast } = useToast();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { formatCurrency } = useSettings();
   const queryClient = useQueryClient();
   
@@ -70,7 +70,12 @@ export default function AdminFinishedAuctions() {
 
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleString('ru-RU', {
+    const localeMap = {
+      'ru': 'ru-RU',
+      'en': 'en-US', 
+      'ka': 'ka-GE'
+    };
+    return date.toLocaleString(localeMap[language as keyof typeof localeMap] || 'en-US', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
@@ -78,8 +83,6 @@ export default function AdminFinishedAuctions() {
       minute: '2-digit',
     });
   };
-
-
 
   if (isLoading) {
     return (
@@ -89,7 +92,7 @@ export default function AdminFinishedAuctions() {
           <div className="flex items-center justify-center py-20">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="text-gray-600">Загрузка завершенных аукционов...</p>
+              <p className="text-gray-600">{t("loadingAuctions")}</p>
             </div>
           </div>
         </main>
@@ -104,9 +107,9 @@ export default function AdminFinishedAuctions() {
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             <i className="fas fa-trophy mr-3"></i>
-            Завершенные аукционы
+            {t("finishedAuctions")}
           </h1>
-          <p className="text-gray-600">Просмотр всех завершенных аукционов и их результатов</p>
+          <p className="text-gray-600">{t("viewFinishedAuctions")}</p>
         </div>
 
         <Card>
@@ -114,10 +117,10 @@ export default function AdminFinishedAuctions() {
             <CardTitle className="flex items-center justify-between">
               <div className="flex items-center">
                 <i className="fas fa-list mr-2"></i>
-                Список завершенных аукционов
+                {t("listFinishedAuctions")}
               </div>
               <Badge variant="secondary" className="text-sm">
-                Всего: {finishedAuctions.length}
+                {t("total")}: {finishedAuctions.length}
               </Badge>
             </CardTitle>
           </CardHeader>
@@ -126,14 +129,14 @@ export default function AdminFinishedAuctions() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Изображение</TableHead>
-                    <TableHead>Название</TableHead>
-                    <TableHead>Финальная цена</TableHead>
-                    <TableHead>Розничная цена</TableHead>
-                    <TableHead>Победитель</TableHead>
-                    <TableHead>Время завершения</TableHead>
-                    <TableHead>Экономия</TableHead>
-                    <TableHead>Действия</TableHead>
+                    <TableHead>{t("image")}</TableHead>
+                    <TableHead>{t("title")}</TableHead>
+                    <TableHead>{t("finalPrice")}</TableHead>
+                    <TableHead>{t("retailPrice")}</TableHead>
+                    <TableHead>{t("winner")}</TableHead>
+                    <TableHead>{t("endTime")}</TableHead>
+                    <TableHead>{t("savings")}</TableHead>
+                    <TableHead>{t("actions")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -142,8 +145,8 @@ export default function AdminFinishedAuctions() {
                       <TableCell colSpan={8} className="text-center py-12 text-gray-500">
                         <div className="flex flex-col items-center">
                           <i className="fas fa-trophy text-gray-300 text-4xl mb-4"></i>
-                          <h3 className="text-lg font-medium mb-2">Нет завершенных аукционов</h3>
-                          <p className="text-sm">Завершенные аукционы появятся здесь</p>
+                          <h3 className="text-lg font-medium mb-2">{t("noFinishedAuctions")}</h3>
+                          <p className="text-sm">{t("finishedAuctionsWillAppear")}</p>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -193,7 +196,7 @@ export default function AdminFinishedAuctions() {
                                     </div>
                                     <div>
                                       <div className="font-medium text-gray-900">
-                                        {auction.winner?.username || "Неизвестный"}
+                                        {auction.winner?.username || t("unknown")}
                                       </div>
                                     </div>
                                   </div>
@@ -222,7 +225,7 @@ export default function AdminFinishedAuctions() {
                                       }}
                                     >
                                       <i className="fas fa-eye mr-2"></i>
-                                      Просмотр
+                                      {t("view")}
                                     </Button>
                                     
                                     <AlertDialog>
@@ -233,25 +236,24 @@ export default function AdminFinishedAuctions() {
                                           disabled={deleteAuctionMutation.isPending}
                                         >
                                           <i className="fas fa-trash mr-2"></i>
-                                          Удалить
+                                          {t("delete")}
                                         </Button>
                                       </AlertDialogTrigger>
                                       <AlertDialogContent>
                                         <AlertDialogHeader>
-                                          <AlertDialogTitle>Подтверждение удаления</AlertDialogTitle>
+                                          <AlertDialogTitle>{t("confirmDelete")}</AlertDialogTitle>
                                           <AlertDialogDescription>
-                                            Вы уверены, что хотите удалить аукцион "{auction.title}"? 
-                                            Это действие нельзя отменить. Все данные об аукционе, включая ставки и статистику, будут удалены навсегда.
+                                            {t("deleteAuctionConfirm").replace("{title}", auction.title)}
                                           </AlertDialogDescription>
                                         </AlertDialogHeader>
                                         <AlertDialogFooter>
-                                          <AlertDialogCancel>Отмена</AlertDialogCancel>
+                                          <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
                                           <AlertDialogAction
                                             onClick={() => deleteAuctionMutation.mutate(auction.id)}
                                             disabled={deleteAuctionMutation.isPending}
                                             className="bg-red-600 hover:bg-red-700"
                                           >
-                                            {deleteAuctionMutation.isPending ? "Удаление..." : "Удалить"}
+                                            {deleteAuctionMutation.isPending ? t("deleting") : t("delete")}
                                           </AlertDialogAction>
                                         </AlertDialogFooter>
                                       </AlertDialogContent>
@@ -274,14 +276,14 @@ export default function AdminFinishedAuctions() {
             <DialogHeader>
               <DialogTitle className="flex items-center">
                 <i className="fas fa-chart-bar mr-2"></i>
-                Статистика аукциона: {selectedAuction?.title}
+                {t("auctionStats")}: {selectedAuction?.title}
               </DialogTitle>
             </DialogHeader>
             
             {statsLoading ? (
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mr-3"></div>
-                <span>Загрузка статистики...</span>
+                <span>{t("loadingStats")}</span>
               </div>
             ) : auctionStats ? (
               <div className="space-y-6">
@@ -290,25 +292,25 @@ export default function AdminFinishedAuctions() {
                   <Card>
                     <CardContent className="p-4 text-center">
                       <div className="text-2xl font-bold text-blue-600">{auctionStats.totalBids}</div>
-                      <div className="text-sm text-gray-600">Всего ставок</div>
+                      <div className="text-sm text-gray-600">{t("totalBids")}</div>
                     </CardContent>
                   </Card>
                   <Card>
                     <CardContent className="p-4 text-center">
                       <div className="text-2xl font-bold text-purple-600">{auctionStats.botBids}</div>
-                      <div className="text-sm text-gray-600">Ставки ботов</div>
+                      <div className="text-sm text-gray-600">{t("botBids")}</div>
                     </CardContent>
                   </Card>
                   <Card>
                     <CardContent className="p-4 text-center">
                       <div className="text-2xl font-bold text-green-600">{auctionStats.userBids}</div>
-                      <div className="text-sm text-gray-600">Ставки пользователей</div>
+                      <div className="text-sm text-gray-600">{t("userBids")}</div>
                     </CardContent>
                   </Card>
                   <Card>
                     <CardContent className="p-4 text-center">
                       <div className="text-2xl font-bold text-orange-600">{auctionStats.adminBids}</div>
-                      <div className="text-sm text-gray-600">Ставки админов</div>
+                      <div className="text-sm text-gray-600">{t("adminBids")}</div>
                     </CardContent>
                   </Card>
                 </div>
@@ -319,7 +321,7 @@ export default function AdminFinishedAuctions() {
                     <CardHeader>
                       <CardTitle className="flex items-center">
                         <i className="fas fa-crown mr-2 text-yellow-500"></i>
-                        Информация о победителе
+                        {t("winnerInfo")}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -340,7 +342,7 @@ export default function AdminFinishedAuctions() {
                             variant={selectedAuction.winner.role === 'admin' ? 'destructive' : 'default'}
                             className="mt-1"
                           >
-                            {selectedAuction.winner.role === 'admin' ? 'Администратор' : 'Пользователь'}
+                            {selectedAuction.winner.role === 'admin' ? t("administrator") : t("user")}
                           </Badge>
                         </div>
                       </div>
@@ -353,7 +355,7 @@ export default function AdminFinishedAuctions() {
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       <i className="fas fa-history mr-2"></i>
-                      История ставок
+                      {t("bidHistory")}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -362,10 +364,10 @@ export default function AdminFinishedAuctions() {
                         <TableHeader>
                           <TableRow>
                             <TableHead>№</TableHead>
-                            <TableHead>Участник</TableHead>
-                            <TableHead>Тип</TableHead>
-                            <TableHead>Сумма</TableHead>
-                            <TableHead>Время</TableHead>
+                            <TableHead>{t("participant")}</TableHead>
+                            <TableHead>{t("type")}</TableHead>
+                            <TableHead>{t("amount")}</TableHead>
+                            <TableHead>{t("time")}</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -391,7 +393,7 @@ export default function AdminFinishedAuctions() {
                                   variant={bid.userRole === 'admin' ? 'destructive' : 'default'}
                                   className="text-xs"
                                 >
-                                  {bid.userRole === 'admin' ? 'Админ' : 'Пользователь'}
+                                  {bid.userRole === 'admin' ? t("admin") : t("user")}
                                 </Badge>
                               </TableCell>
                               <TableCell className="font-mono text-sm">
@@ -411,7 +413,7 @@ export default function AdminFinishedAuctions() {
             ) : (
               <div className="text-center py-8 text-gray-500">
                 <i className="fas fa-exclamation-circle text-4xl mb-4"></i>
-                <p>Не удалось загрузить статистику аукциона</p>
+                <p>{t("failedToLoadStats")}</p>
               </div>
             )}
           </DialogContent>

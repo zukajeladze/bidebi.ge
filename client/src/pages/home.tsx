@@ -57,52 +57,22 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                 <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/30">
                   <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                   <span className="text-white text-xs sm:text-sm font-semibold">
-                    {settings?.language === 'ka'
-                      ? 'პირველი პენი აუქციონი საქართველოში'
-                      : settings?.language === 'en'
-                        ? 'First Penny Auction in Georgia'
-                        : 'Первый пენი аукцион в Грузии'}
+                    {t('firstPennyAuctionPlatform')}
                   </span>
                 </div>
 
                 {/* Main Heading */}
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
-                  {settings?.language === 'ka' ? (
-                    <>
-                      მოიგეთ პრემიუმ <br />
-                      <span className="text-yellow-300">
-                        ტექნიკა 99%-მდე
-                      </span>{' '}
-                      <br />
-                      ფასდაკლებით!
-                    </>
-                  ) : settings?.language === 'en' ? (
-                    <>
-                      Win Premium <br />
-                      <span className="text-yellow-300">
-                        Tech Up to 99%
-                      </span>{' '}
-                      <br />
-                      Off!
-                    </>
-                  ) : (
-                    <>
-                      Выигрывайте <br />
-                      <span className="text-yellow-300">
-                        технику со скидкой
-                      </span>{' '}
-                      <br />
-                      до 99%!
-                    </>
-                  )}
+                  {t('heroTitle1')} <br />
+                  <span className="text-yellow-300">
+                    {t('heroTitleHighlight')}
+                  </span>{' '}
+                  <br />
+                  {t('heroTitle2')}
                 </h1>
 
                 <p className="text-sm sm:text-base lg:text-lg text-blue-100 max-w-lg">
-                  {settings?.language === 'ka'
-                    ? 'iPhone, MacBook, Samsung და სხვა ბრენდული ტექნიკა უნიკალური პენი-აუქციონის ფორმატით'
-                    : settings?.language === 'en'
-                      ? 'iPhone, MacBook, Samsung and other premium tech through unique penny auction format'
-                      : 'iPhone, MacBook, Samsung и другая брендовая техника в уникальном формате пенни-аукционов'}
+                  {t('heroDescriptionItems')}
                 </p>
 
                 {/* CTA Buttons */}
@@ -115,11 +85,7 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                           data-testid="button-hero-start"
                         >
                           <i className="fas fa-rocket mr-2"></i>
-                          {settings?.language === 'ka'
-                            ? 'დაიწყე მოგება'
-                            : settings?.language === 'en'
-                              ? 'Start Winning'
-                              : 'Начать выигрывать'}
+                          {t('startWinning')}
                         </Button>
                       </Link>
                       <Link href="/how-it-works">
@@ -128,11 +94,7 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                           data-testid="button-hero-learn"
                         >
                           <i className="fas fa-play-circle mr-2"></i>
-                          {settings?.language === 'ka'
-                            ? 'როგორ მუშაობს?'
-                            : settings?.language === 'en'
-                              ? 'How It Works?'
-                              : 'Как это работает?'}
+                          {t('howItWorks')}
                         </Button>
                       </Link>
                     </>
@@ -143,11 +105,7 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                         data-testid="button-hero-auctions"
                       >
                         <i className="fas fa-eye mr-2"></i>
-                        {settings?.language === 'ka'
-                          ? 'ნახე აუქციონები'
-                          : settings?.language === 'en'
-                            ? 'View Auctions'
-                            : 'Посмотреть аукционы'}
+                        {t('heroViewAuctions')}
                       </Button>
                     </Link>
                   )}
@@ -166,11 +124,7 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                       99%
                     </div>
                     <p className="text-blue-100 text-xs md:text-sm font-medium">
-                      {settings?.language === 'ka'
-                        ? 'ფასდაკლება'
-                        : settings?.language === 'en'
-                          ? 'Discount'
-                          : 'Экономия'}
+                      {t('discount')}
                     </p>
                   </div>
                 </div>
@@ -185,11 +139,7 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                       100%
                     </div>
                     <p className="text-blue-100 text-xs md:text-sm font-medium">
-                      {settings?.language === 'ka'
-                        ? 'ორიგინალური'
-                        : settings?.language === 'en'
-                          ? 'Authentic'
-                          : 'Оригинал'}
+                      {t('authentic')}
                     </p>
                   </div>
                 </div>
@@ -204,11 +154,7 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                       24/7
                     </div>
                     <p className="text-blue-100 text-xs md:text-sm font-medium">
-                      {settings?.language === 'ka'
-                        ? 'აუქციონები'
-                        : settings?.language === 'en'
-                          ? 'Auctions'
-                          : 'Аукционы'}
+                      {t('auctions')}
                     </p>
                   </div>
                 </div>
@@ -220,18 +166,10 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
                       <i className="fas fa-truck text-lg md:text-2xl text-white"></i>
                     </div>
                     <div className="text-2xl md:text-3xl font-black text-white mb-1">
-                      {settings?.language === 'ka'
-                        ? 'უფასო'
-                        : settings?.language === 'en'
-                          ? 'Free'
-                          : 'Бесп.'}
+                      {t('free')}
                     </div>
                     <p className="text-blue-100 text-xs md:text-sm font-medium">
-                      {settings?.language === 'ka'
-                        ? 'მიწოდება'
-                        : settings?.language === 'en'
-                          ? 'Delivery'
-                          : 'Доставка'}
+                      {t('delivery')}
                     </p>
                   </div>
                 </div>
@@ -254,7 +192,7 @@ export default function Home() {
 
   const { connected } = useSocket();
   const { user, isAuthenticated } = useAuth();
-  const { formatCurrency } = useSettings();
+  const { formatCurrency, settings } = useSettings();
   const { t } = useLanguage();
   const [timers, setTimers] = useState<Record<string, number>>({});
   const [auctionBids, setAuctionBids] = useState<Record<string, Bid[]>>({});
@@ -352,15 +290,14 @@ export default function Home() {
                 <div className="text-center">
                   <div className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full font-bold text-lg shadow-lg mb-4">
                     <i className="fas fa-gift mr-2 text-xl"></i>
-                    Специальные предложения
+                    {t('specialOffers')}
                     <i className="fas fa-star ml-2 animate-pulse"></i>
                   </div>
                   <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                    Пакеты ставок с супер скидками!
+                    {t('bidPackagesTitle')}
                   </h2>
                   <p className="text-gray-600 text-lg">
-                    Получите больше ставок за меньшие деньги. Ограниченное
-                    время!
+                    {t('bidPackagesSubtitle')}
                   </p>
                 </div>
 
@@ -380,7 +317,7 @@ export default function Home() {
                     <div className="relative bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-4 md:p-6 border-2 border-yellow-200 shadow-lg overflow-hidden cursor-pointer">
                       {/* Special offer badge */}
                       <div className="absolute top-2 right-2 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg z-20">
-                        ГОРЯЧО!
+                        {t('hot')}
                       </div>
 
                       {/* Sparkle effects */}
@@ -408,7 +345,7 @@ export default function Home() {
                           <div className="space-y-2">
                             <div className="bg-white rounded-lg p-2 md:p-3 shadow-sm">
                               <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                                Стоимость пакета
+                                {t('packageValue')}
                               </div>
                               <div className="text-lg md:text-2xl font-bold text-green-600">
                                 {formatCurrency(auction.retailPrice)}
@@ -418,11 +355,13 @@ export default function Home() {
                             {/* Start Time */}
                             <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-2">
                               <div className="text-xs uppercase tracking-wide mb-1">
-                                Аукцион начинается
+                                {t('auctionStarts')}
                               </div>
                               <div className="text-xs md:text-sm font-semibold">
                                 {new Date(auction.startTime).toLocaleDateString(
-                                  'ru-RU',
+                                  settings?.language === 'ka'
+                                    ? 'ka-GE'
+                                    : 'en-US',
                                   {
                                     day: '2-digit',
                                     month: '2-digit',
@@ -439,7 +378,7 @@ export default function Home() {
                             <div className="flex items-center justify-center space-x-2 bg-yellow-100 rounded-lg p-2">
                               <i className="fas fa-users text-yellow-600"></i>
                               <span className="text-sm font-semibold text-yellow-800">
-                                {auction.prebidsCount} участников готовы
+                                {auction.prebidsCount} {t('participantsReady')}
                               </span>
                             </div>
                           )}
@@ -447,7 +386,7 @@ export default function Home() {
                           {/* View Details Text */}
                           <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-2 md:py-3 px-3 md:px-4 rounded-xl shadow-lg text-sm md:text-base">
                             <i className="fas fa-gift mr-2"></i>
-                            Участвовать
+                            {t('participate')}
                           </div>
                         </div>
                       </div>
@@ -462,7 +401,7 @@ export default function Home() {
                   <Link href="/auctions">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                       <i className="fas fa-eye mr-2"></i>
-                      Посмотреть все пакеты ({bidPackageAuctions.length})
+                      {t('viewAllPackages')} ({bidPackageAuctions.length})
                     </Button>
                   </Link>
                 </div>
@@ -602,7 +541,7 @@ export default function Home() {
                         </p>
                         <p className="text-xs text-gray-500">
                           {new Date(auction.endTime!).toLocaleDateString(
-                            'ru-RU',
+                            settings?.language === 'ka' ? 'ka-GE' : 'en-US',
                           )}
                         </p>
                       </div>

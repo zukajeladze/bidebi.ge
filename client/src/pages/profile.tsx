@@ -117,9 +117,9 @@ export default function Profile() {
         } catch (e) {
           // If parsing fails, check for common error patterns
           if (error.message.includes("+996")) {
-            errorMessage = "Введите номер в формате +996XXXXXXXXX";
+            errorMessage = t("enterPhoneFormat");
           } else if (error.message.includes("email")) {
-            errorMessage = "Введите корректный email адрес";
+            errorMessage = t("enterValidEmail");
           }
         }
       }
@@ -266,7 +266,7 @@ export default function Profile() {
                       <Label htmlFor="bidBalance">{t("bidBalance")}</Label>
                       <Input
                         id="bidBalance"
-                        value={`${formatCurrency(profile?.bidBalance || 0)} бидов`}
+                        value={`${formatCurrency(profile?.bidBalance || 0)} ${t("bids")}`}
                         disabled
                         className="bg-gray-50"
                       />
@@ -530,7 +530,7 @@ export default function Profile() {
                           </div>
                           <div>
                             <p className="font-medium text-sm text-gray-900 truncate max-w-[100px]">
-                              Аукцион #{bid.auctionId.slice(-4)}
+                              {t("auctionNo")}{bid.auctionId.slice(-4)}
                             </p>
                             <p className="text-xs text-gray-500">
                               {formatDate(bid.createdAt)}

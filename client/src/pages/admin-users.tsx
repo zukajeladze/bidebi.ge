@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { Header } from "@/components/header";
-import { useAuth } from "@/hooks/use-auth";
-import { useLocation, Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useState, useEffect } from 'react';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { Header } from '@/components/header';
+import { useAuth } from '@/hooks/use-auth';
+import { useLocation, Link } from 'wouter';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 import {
   Dialog,
   DialogContent,
@@ -21,12 +21,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   AlertDialog,
-  AlertDialogAction, 
+  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -34,11 +34,11 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { useToast } from "@/hooks/use-toast";
-import { useLanguage } from "@/hooks/use-language";
-import { useSettings } from "@/hooks/use-settings";
-import { apiRequest, queryClient } from "@/lib/queryClient";
+} from '@/components/ui/alert-dialog';
+import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/hooks/use-language';
+import { useSettings } from '@/hooks/use-settings';
+import { apiRequest, queryClient } from '@/lib/queryClient';
 
 interface User {
   id: string;
@@ -96,19 +96,21 @@ export default function AdminUsers() {
   const { isAdmin, isLoading } = useAuth();
   const [, setLocation] = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editFormData, setEditFormData] = useState({
-    username: "",
-    firstName: "",
-    lastName: "",
-    email: "", 
-    phone: "",
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
     bidBalance: 0,
-    role: "user",
+    role: 'user',
   });
-  const [viewingUserActivity, setViewingUserActivity] = useState<User | null>(null);
+  const [viewingUserActivity, setViewingUserActivity] = useState<User | null>(
+    null,
+  );
   const [isActivityDialogOpen, setIsActivityDialogOpen] = useState(false);
   const { toast } = useToast();
   const { t } = useLanguage();
@@ -117,61 +119,72 @@ export default function AdminUsers() {
 
   useEffect(() => {
     if (!isLoading && !isAdmin) {
-      setLocation("/");
+      setLocation('/');
     }
   }, [isAdmin, isLoading, setLocation]);
 
   const { data: usersData, isLoading: usersLoading } = useQuery<UsersResponse>({
-    queryKey: [`/api/admin/users?page=${currentPage}&limit=${limit}&search=${searchTerm}`],
+    queryKey: [
+      `/api/admin/users?page=${currentPage}&limit=${limit}&search=${searchTerm}`,
+    ],
     enabled: isAdmin,
   });
 
   const { data: todayRegistrationsData } = useQuery<{ count: number }>({
-    queryKey: ["/api/admin/users/today-registrations"],
+    queryKey: ['/api/admin/users/today-registrations'],
     enabled: isAdmin,
   });
 
-  const { data: userActivityData, isLoading: activityLoading } = useQuery<UserActivity>({
-    queryKey: [`/api/admin/users/${viewingUserActivity?.id}/activity`],
-    enabled: isAdmin && !!viewingUserActivity?.id,
-  });
+  const { data: userActivityData, isLoading: activityLoading } =
+    useQuery<UserActivity>({
+      queryKey: [`/api/admin/users/${viewingUserActivity?.id}/activity`],
+      enabled: isAdmin && !!viewingUserActivity?.id,
+    });
 
   // Mutations for edit and delete
   const editUserMutation = useMutation({
-    mutationFn: (userData: { id: string } & typeof editFormData) => 
+    mutationFn: (userData: { id: string } & typeof editFormData) =>
       apiRequest('PATCH', `/api/admin/users/${userData.id}`, userData),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`/api/admin/users?page=${currentPage}&limit=${limit}&search=${searchTerm}`] });
+      queryClient.invalidateQueries({
+        queryKey: [
+          `/api/admin/users?page=${currentPage}&limit=${limit}&search=${searchTerm}`,
+        ],
+      });
       handleCloseEditDialog();
       toast({
-        title: t("success"),
-        description: t("userUpdated"),
+        title: t('success'),
+        description: t('userUpdated'),
       });
     },
     onError: () => {
       toast({
-        title: t("error"),
-        description: t("userUpdateError"),
-        variant: "destructive",
+        title: t('error'),
+        description: t('userUpdateError'),
+        variant: 'destructive',
       });
     },
   });
 
   const deleteUserMutation = useMutation({
-    mutationFn: (userId: string) => 
+    mutationFn: (userId: string) =>
       apiRequest('DELETE', `/api/admin/users/${userId}`),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`/api/admin/users?page=${currentPage}&limit=${limit}&search=${searchTerm}`] });
+      queryClient.invalidateQueries({
+        queryKey: [
+          `/api/admin/users?page=${currentPage}&limit=${limit}&search=${searchTerm}`,
+        ],
+      });
       toast({
-        title: t("success"),
-        description: t("userDeleted"),
+        title: t('success'),
+        description: t('userDeleted'),
       });
     },
     onError: () => {
       toast({
-        title: t("error"),
-        description: t("userDeleteError"),
-        variant: "destructive",
+        title: t('error'),
+        description: t('userDeleteError'),
+        variant: 'destructive',
       });
     },
   });
@@ -180,10 +193,10 @@ export default function AdminUsers() {
     setEditingUser(user);
     setEditFormData({
       username: user.username,
-      firstName: user.firstName || "",
-      lastName: user.lastName || "",
-      email: user.email || "",
-      phone: user.phone || "",
+      firstName: user.firstName || '',
+      lastName: user.lastName || '',
+      email: user.email || '',
+      phone: user.phone || '',
       bidBalance: user.bidBalance,
       role: user.role,
     });
@@ -204,13 +217,13 @@ export default function AdminUsers() {
     setIsEditDialogOpen(false);
     setEditingUser(null);
     setEditFormData({
-      username: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
+      username: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
       bidBalance: 0,
-      role: "user",
+      role: 'user',
     });
   };
 
@@ -224,25 +237,26 @@ export default function AdminUsers() {
     setViewingUserActivity(null);
   };
 
-
-
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("ru-RU", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    return new Date(dateString).toLocaleDateString(
+      t('systemLanguage') === 'ka' ? 'ka-GE' : 'en-US',
+      {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      },
+    );
   };
 
-
-
   const getRoleBadge = (role: string) => {
-    if (role === "admin") {
-      return <Badge className="bg-red-100 text-red-800">Админ</Badge>;
+    if (role === 'admin') {
+      return (
+        <Badge className="bg-red-100 text-red-800">{t('administrator')}</Badge>
+      );
     }
-    return <Badge variant="secondary">Пользователь</Badge>;
+    return <Badge variant="secondary">{t('user')}</Badge>;
   };
 
   if (isLoading) {
@@ -250,7 +264,7 @@ export default function AdminUsers() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-gray-600">Загрузка...</p>
+          <p className="text-gray-600">{t('loading')}</p>
         </div>
       </div>
     );
@@ -263,7 +277,7 @@ export default function AdminUsers() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <main className="max-w-[1504px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <div className="mb-6">
@@ -271,13 +285,17 @@ export default function AdminUsers() {
             <Link href="/admin">
               <Button variant="ghost" className="flex items-center space-x-2">
                 <i className="fas fa-arrow-left"></i>
-                <span>Назад</span>
+                <span>{t('back')}</span>
               </Button>
             </Link>
             <div className="text-sm text-gray-500">
-              <Link href="/admin" className="hover:text-gray-900">Панель администратора</Link>
+              <Link href="/admin" className="hover:text-gray-900">
+                {t('adminPanel')}
+              </Link>
               <i className="fas fa-chevron-right mx-2"></i>
-              <span className="text-gray-900 font-medium">Управление пользователями</span>
+              <span className="text-gray-900 font-medium">
+                {t('adminUsers')}
+              </span>
             </div>
           </div>
         </div>
@@ -286,11 +304,9 @@ export default function AdminUsers() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">
             <i className="fas fa-users text-blue-500 mr-3"></i>
-            Управление пользователями
+            {t('adminUsers')}
           </h1>
-          <p className="text-gray-600 mt-2">
-            Просмотр и управление всеми пользователями системы
-          </p>
+          <p className="text-gray-600 mt-2">{t('adminUsersManage')}</p>
         </div>
 
         {/* Stats Cards */}
@@ -303,8 +319,10 @@ export default function AdminUsers() {
                     <i className="fas fa-users text-blue-600 text-xl"></i>
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm text-gray-600">Всего пользователей</p>
-                    <p className="text-2xl font-bold text-gray-900">{usersData.total}</p>
+                    <p className="text-sm text-gray-600">{t('allUsers')}</p>
+                    <p className="text-2xl font-bold text-gray-900">
+                      {usersData.total}
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -316,9 +334,9 @@ export default function AdminUsers() {
                     <i className="fas fa-user-plus text-green-600 text-xl"></i>
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm text-gray-600">Активных</p>
+                    <p className="text-sm text-gray-600">{t('activeUsers')}</p>
                     <p className="text-2xl font-bold text-gray-900">
-                      {usersData.users.filter(u => u.totalBids > 0).length}
+                      {usersData.users.filter((u) => u.totalBids > 0).length}
                     </p>
                   </div>
                 </div>
@@ -331,9 +349,9 @@ export default function AdminUsers() {
                     <i className="fas fa-crown text-purple-600 text-xl"></i>
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm text-gray-600">Админов</p>
+                    <p className="text-sm text-gray-600">{t('admins')}</p>
                     <p className="text-2xl font-bold text-gray-900">
-                      {usersData.users.filter(u => u.role === 'admin').length}
+                      {usersData.users.filter((u) => u.role === 'admin').length}
                     </p>
                   </div>
                 </div>
@@ -346,16 +364,16 @@ export default function AdminUsers() {
                     <i className="fas fa-calendar-plus text-yellow-600 text-xl"></i>
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm text-gray-600">Сегодня зарегистрировано</p>
+                    <p className="text-sm text-gray-600">
+                      {t('newUsersToday')}
+                    </p>
                     <p className="text-2xl font-bold text-gray-900">
                       {todayRegistrationsData?.count || 0}
                     </p>
-                    <p className="text-xs text-gray-500">
-                      новых пользователей
-                    </p>
+                    <p className="text-xs text-gray-500">{t('newUsers')}</p>
                   </div>
                 </div>
-              </CardContent>  
+              </CardContent>
             </Card>
           </div>
         )}
@@ -365,7 +383,7 @@ export default function AdminUsers() {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <i className="fas fa-search text-gray-500"></i>
-              <span>Поиск пользователей</span>
+              <span>{t('searchUsers')}</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -373,7 +391,7 @@ export default function AdminUsers() {
               <div className="flex-1">
                 <input
                   type="text"
-                  placeholder="Поиск по имени пользователя, email или имени..."
+                  placeholder={t('searchUsersPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -383,13 +401,13 @@ export default function AdminUsers() {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  setSearchTerm("");
+                  setSearchTerm('');
                 }}
                 variant="outline"
                 disabled={!searchTerm}
               >
                 <i className="fas fa-times mr-2"></i>
-                Очистить
+                {t('clear')}
               </Button>
             </div>
           </CardContent>
@@ -398,18 +416,18 @@ export default function AdminUsers() {
         {/* Users Table */}
         <Card>
           <CardHeader>
-            <CardTitle>Список пользователей</CardTitle>
+            <CardTitle>{t('usersList')}</CardTitle>
           </CardHeader>
           <CardContent>
             {usersLoading ? (
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                <span className="ml-2 text-gray-600">Загрузка пользователей...</span>
+                <span className="ml-2 text-gray-600">{t('loading')}</span>
               </div>
             ) : usersData?.users.length === 0 ? (
               <div className="text-center py-8">
                 <i className="fas fa-users text-gray-300 text-4xl mb-4"></i>
-                <p className="text-gray-500">Пользователи не найдены</p>
+                <p className="text-gray-500">{t('noUsersFound')}</p>
               </div>
             ) : (
               <>
@@ -417,14 +435,14 @@ export default function AdminUsers() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Пользователь</TableHead>
-                        <TableHead>Контакты</TableHead>
-                        <TableHead>IP адрес</TableHead>
-                        <TableHead>Биды</TableHead>
-                        <TableHead>Статистика</TableHead>
-                        <TableHead>Роль</TableHead>
-                        <TableHead>Регистрация</TableHead>
-                        <TableHead>Действия</TableHead>
+                        <TableHead>{t('user')}</TableHead>
+                        <TableHead>{t('contacts')}</TableHead>
+                        <TableHead>{t('ipAddress')}</TableHead>
+                        <TableHead>{t('bids')}</TableHead>
+                        <TableHead>{t('stats')}</TableHead>
+                        <TableHead>{t('role')}</TableHead>
+                        <TableHead>{t('registration')}</TableHead>
+                        <TableHead>{t('actions')}</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -436,7 +454,9 @@ export default function AdminUsers() {
                                 <i className="fas fa-user text-sm"></i>
                               </div>
                               <div>
-                                <p className="font-medium text-gray-900">{user.username}</p>
+                                <p className="font-medium text-gray-900">
+                                  {user.username}
+                                </p>
                                 <p className="text-sm text-gray-500">
                                   {user.firstName} {user.lastName}
                                 </p>
@@ -451,24 +471,31 @@ export default function AdminUsers() {
                           </TableCell>
                           <TableCell>
                             <span className="text-sm text-gray-600 font-mono">
-                              {user.ipAddress || "Не записан"}
+                              {user.ipAddress || t('notRecorded')}
                             </span>
                           </TableCell>
                           <TableCell>
                             <span className="font-medium text-green-600">
-                              {user.bidBalance} бидов
+                              {user.bidBalance} {t('bids')}
                             </span>
                           </TableCell>
                           <TableCell>
                             <div className="text-sm">
-                              <p className="text-gray-900">Ставок: {user.totalBids}</p>
-                              <p className="text-gray-500">Выиграно: {user.wonAuctions}</p>
-                              <p className="text-gray-500">Потрачено: {parseFloat(user.totalSpent.toString()).toFixed(2)} сом</p>
+                              <p className="text-gray-900">
+                                {t('totalBids')}: {user.totalBids}
+                              </p>
+                              <p className="text-gray-500">
+                                {t('won')}: {user.wonAuctions}
+                              </p>
+                              <p className="text-gray-500">
+                                {t('spent')}:{' '}
+                                {formatCurrency(
+                                  parseFloat(user.totalSpent.toString()),
+                                )}
+                              </p>
                             </div>
                           </TableCell>
-                          <TableCell>
-                            {getRoleBadge(user.role)}
-                          </TableCell>
+                          <TableCell>{getRoleBadge(user.role)}</TableCell>
                           <TableCell>
                             <span className="text-sm text-gray-500">
                               {formatDate(user.createdAt)}
@@ -476,165 +503,229 @@ export default function AdminUsers() {
                           </TableCell>
                           <TableCell>
                             <div className="flex space-x-2">
-                              <Button 
-                                variant="outline" 
+                              <Button
+                                variant="outline"
                                 size="sm"
                                 onClick={() => handleViewActivity(user)}
-                                title="Активность пользователя"
+                                title={t('userActivity')}
                               >
                                 <i className="fas fa-chart-line"></i>
                               </Button>
-                              <Dialog open={isEditDialogOpen && editingUser?.id === user.id} onOpenChange={(open) => {
-                                if (!open) handleCloseEditDialog();
-                              }}>
+                              <Dialog
+                                open={
+                                  isEditDialogOpen &&
+                                  editingUser?.id === user.id
+                                }
+                                onOpenChange={(open) => {
+                                  if (!open) handleCloseEditDialog();
+                                }}
+                              >
                                 <DialogTrigger asChild>
-                                  <Button 
-                                    variant="outline" 
+                                  <Button
+                                    variant="outline"
                                     size="sm"
                                     onClick={() => handleEditUser(user)}
-                                    title="Изменить пользователя"
+                                    title={t('editUser')}
                                   >
                                     <i className="fas fa-edit"></i>
                                   </Button>
                                 </DialogTrigger>
                                 <DialogContent>
                                   <DialogHeader>
-                                    <DialogTitle>Редактировать пользователя</DialogTitle>
+                                    <DialogTitle>
+                                      {t('editUserTitle')}
+                                    </DialogTitle>
                                     <DialogDescription>
-                                      Изменить информацию и настройки пользователя
+                                      {t('editUserDesc')}
                                     </DialogDescription>
                                   </DialogHeader>
                                   <div className="space-y-4 py-4">
                                     <div className="grid grid-cols-2 gap-4">
                                       <div>
-                                        <Label htmlFor="username">Имя пользователя</Label>
+                                        <Label htmlFor="username">
+                                          {t('username')}
+                                        </Label>
                                         <Input
                                           id="username"
                                           value={editFormData.username}
                                           onChange={(e) => {
                                             e.stopPropagation();
-                                            setEditFormData(prev => ({ ...prev, username: e.target.value }));
+                                            setEditFormData((prev) => ({
+                                              ...prev,
+                                              username: e.target.value,
+                                            }));
                                           }}
                                         />
                                       </div>
                                       <div>
-                                        <Label htmlFor="role">Роль</Label>
+                                        <Label htmlFor="role">
+                                          {t('role')}
+                                        </Label>
                                         <select
                                           id="role"
                                           value={editFormData.role}
                                           onChange={(e) => {
                                             e.stopPropagation();
-                                            setEditFormData(prev => ({ ...prev, role: e.target.value }));
+                                            setEditFormData((prev) => ({
+                                              ...prev,
+                                              role: e.target.value,
+                                            }));
                                           }}
                                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         >
-                                          <option value="user">Пользователь</option>
-                                          <option value="admin">Админ</option>
+                                          <option value="user">
+                                            {t('user')}
+                                          </option>
+                                          <option value="admin">
+                                            {t('administrator')}
+                                          </option>
                                         </select>
                                       </div>
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                       <div>
-                                        <Label htmlFor="firstName">Имя</Label>
+                                        <Label htmlFor="firstName">
+                                          {t('firstName')}
+                                        </Label>
                                         <Input
                                           id="firstName"
                                           value={editFormData.firstName}
                                           onChange={(e) => {
                                             e.stopPropagation();
-                                            setEditFormData(prev => ({ ...prev, firstName: e.target.value }));
+                                            setEditFormData((prev) => ({
+                                              ...prev,
+                                              firstName: e.target.value,
+                                            }));
                                           }}
                                         />
                                       </div>
                                       <div>
-                                        <Label htmlFor="lastName">Фамилия</Label>
+                                        <Label htmlFor="lastName">
+                                          {t('lastName')}
+                                        </Label>
                                         <Input
                                           id="lastName"
                                           value={editFormData.lastName}
                                           onChange={(e) => {
                                             e.stopPropagation();
-                                            setEditFormData(prev => ({ ...prev, lastName: e.target.value }));
+                                            setEditFormData((prev) => ({
+                                              ...prev,
+                                              lastName: e.target.value,
+                                            }));
                                           }}
                                         />
                                       </div>
                                     </div>
                                     <div>
-                                      <Label htmlFor="email">Email</Label>
+                                      <Label htmlFor="email">
+                                        {t('contactEmail')}
+                                      </Label>
                                       <Input
                                         id="email"
                                         type="email"
                                         value={editFormData.email}
                                         onChange={(e) => {
                                           e.stopPropagation();
-                                          setEditFormData(prev => ({ ...prev, email: e.target.value }));
+                                          setEditFormData((prev) => ({
+                                            ...prev,
+                                            email: e.target.value,
+                                          }));
                                         }}
                                       />
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                       <div>
-                                        <Label htmlFor="phone">Телефон</Label>
+                                        <Label htmlFor="phone">
+                                          {t('phone')}
+                                        </Label>
                                         <Input
                                           id="phone"
                                           value={editFormData.phone}
                                           onChange={(e) => {
                                             e.stopPropagation();
-                                            setEditFormData(prev => ({ ...prev, phone: e.target.value }));
+                                            setEditFormData((prev) => ({
+                                              ...prev,
+                                              phone: e.target.value,
+                                            }));
                                           }}
                                         />
                                       </div>
                                       <div>
-                                        <Label htmlFor="bidBalance">Биды</Label>
+                                        <Label htmlFor="bidBalance">
+                                          {t('userBidBalance')}
+                                        </Label>
                                         <Input
                                           id="bidBalance"
                                           type="number"
                                           value={editFormData.bidBalance}
                                           onChange={(e) => {
                                             e.stopPropagation();
-                                            setEditFormData(prev => ({ ...prev, bidBalance: parseInt(e.target.value) || 0 }));
+                                            setEditFormData((prev) => ({
+                                              ...prev,
+                                              bidBalance:
+                                                parseInt(e.target.value) || 0,
+                                            }));
                                           }}
                                         />
                                       </div>
                                     </div>
                                   </div>
                                   <div className="flex justify-end space-x-2">
-                                    <Button variant="outline" onClick={handleCloseEditDialog}>
-                                      Отмена
+                                    <Button
+                                      variant="outline"
+                                      onClick={handleCloseEditDialog}
+                                    >
+                                      {t('cancel')}
                                     </Button>
-                                    <Button 
+                                    <Button
                                       onClick={handleSaveEdit}
                                       disabled={editUserMutation.isPending}
                                     >
-                                      {editUserMutation.isPending ? "Сохранение..." : "Сохранить"}
+                                      {editUserMutation.isPending
+                                        ? t('saving')
+                                        : t('save')}
                                     </Button>
                                   </div>
                                 </DialogContent>
                               </Dialog>
-                              
+
                               <AlertDialog>
                                 <AlertDialogTrigger asChild>
-                                  <Button 
-                                    variant="outline" 
-                                    size="sm" 
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
                                     className="text-red-600 hover:text-red-700"
-                                    title="Удалить пользователя"
+                                    title={t('deleteUser')}
                                   >
                                     <i className="fas fa-trash"></i>
                                   </Button>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                   <AlertDialogHeader>
-                                    <AlertDialogTitle>Удалить пользователя?</AlertDialogTitle>
+                                    <AlertDialogTitle>
+                                      {t('deleteUserTitle')}
+                                    </AlertDialogTitle>
                                     <AlertDialogDescription>
-                                      Это действие нельзя отменить. Пользователь {user.username} будет удален навсегда.
+                                      {t('deleteUserConfirm').replace(
+                                        '{username}',
+                                        user.username,
+                                      )}
                                     </AlertDialogDescription>
                                   </AlertDialogHeader>
                                   <AlertDialogFooter>
-                                    <AlertDialogCancel>Отмена</AlertDialogCancel>
+                                    <AlertDialogCancel>
+                                      {t('cancel')}
+                                    </AlertDialogCancel>
                                     <AlertDialogAction
-                                      onClick={() => deleteUserMutation.mutate(user.id)}
+                                      onClick={() =>
+                                        deleteUserMutation.mutate(user.id)
+                                      }
                                       disabled={deleteUserMutation.isPending}
                                       className="bg-red-600 hover:bg-red-700"
                                     >
-                                      {deleteUserMutation.isPending ? "Удаление..." : "Удалить"}
+                                      {deleteUserMutation.isPending
+                                        ? t('deleting')
+                                        : t('delete')}
                                     </AlertDialogAction>
                                   </AlertDialogFooter>
                                 </AlertDialogContent>
@@ -651,7 +742,8 @@ export default function AdminUsers() {
                 {usersData && usersData.totalPages > 1 && (
                   <div className="mt-6 flex items-center justify-between">
                     <div className="text-sm text-gray-700">
-                      Показано {(currentPage - 1) * limit + 1}-{Math.min(currentPage * limit, usersData.total)} из {usersData.total} пользователей
+                      {/* Pagination text is tricky to localize perfectly without dynamic interpolation, keeping simple for now or use regex */}
+                      {t('total')}: {usersData.total}
                     </div>
                     <div className="flex space-x-2">
                       <Button
@@ -661,14 +753,18 @@ export default function AdminUsers() {
                         onClick={() => setCurrentPage(currentPage - 1)}
                       >
                         <i className="fas fa-chevron-left mr-2"></i>
-                        Предыдущая
+                        {t('back')}
                       </Button>
-                      
-                      {Array.from({ length: usersData.totalPages }, (_, i) => i + 1)
-                        .filter(page => 
-                          page === 1 || 
-                          page === usersData.totalPages || 
-                          Math.abs(page - currentPage) <= 2
+
+                      {Array.from(
+                        { length: usersData.totalPages },
+                        (_, i) => i + 1,
+                      )
+                        .filter(
+                          (page) =>
+                            page === 1 ||
+                            page === usersData.totalPages ||
+                            Math.abs(page - currentPage) <= 2,
                         )
                         .map((page, index, array) => (
                           <div key={page} className="flex items-center">
@@ -676,7 +772,9 @@ export default function AdminUsers() {
                               <span className="px-2 text-gray-500">...</span>
                             )}
                             <Button
-                              variant={page === currentPage ? "default" : "outline"}
+                              variant={
+                                page === currentPage ? 'default' : 'outline'
+                              }
                               size="sm"
                               onClick={() => setCurrentPage(page)}
                             >
@@ -684,14 +782,14 @@ export default function AdminUsers() {
                             </Button>
                           </div>
                         ))}
-                      
+
                       <Button
                         variant="outline"
                         size="sm"
                         disabled={currentPage === usersData.totalPages}
                         onClick={() => setCurrentPage(currentPage + 1)}
                       >
-                        Следующая
+                        {t('next')}
                         <i className="fas fa-chevron-right ml-2"></i>
                       </Button>
                     </div>
@@ -703,22 +801,28 @@ export default function AdminUsers() {
         </Card>
 
         {/* User Activity Dialog */}
-        <Dialog open={isActivityDialogOpen} onOpenChange={handleCloseActivityDialog}>
+        <Dialog
+          open={isActivityDialogOpen}
+          onOpenChange={handleCloseActivityDialog}
+        >
           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center space-x-2">
                 <i className="fas fa-chart-line text-blue-500"></i>
-                <span>Активность пользователя: {viewingUserActivity?.username}</span>
+                <span>
+                  {t('userActivityTitle').replace(
+                    '{username}',
+                    viewingUserActivity?.username || '',
+                  )}
+                </span>
               </DialogTitle>
-              <DialogDescription>
-                История ставок, пребидов и выигранных аукционов
-              </DialogDescription>
+              <DialogDescription>{t('userActivityDesc')}</DialogDescription>
             </DialogHeader>
-            
+
             {activityLoading ? (
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                <span className="ml-2 text-gray-600">Загрузка активности...</span>
+                <span className="ml-2 text-gray-600">{t('loading')}</span>
               </div>
             ) : userActivityData ? (
               <div className="space-y-6">
@@ -727,20 +831,29 @@ export default function AdminUsers() {
                   <div>
                     <h3 className="text-lg font-semibold text-green-600 mb-3">
                       <i className="fas fa-trophy mr-2"></i>
-                      Выигранные аукционы ({userActivityData.wonAuctions.length})
+                      Выигранные аукционы ({userActivityData.wonAuctions.length}
+                      )
                     </h3>
                     <div className="space-y-2">
                       {userActivityData.wonAuctions.map((auction) => (
-                        <div key={auction.id} className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div
+                          key={auction.id}
+                          className="p-3 bg-green-50 border border-green-200 rounded-lg"
+                        >
                           <div className="flex justify-between items-start">
                             <div>
-                              <p className="font-medium text-green-800">{auction.title}</p>
+                              <p className="font-medium text-green-800">
+                                {auction.title}
+                              </p>
                               <p className="text-sm text-green-600">
-                                Итоговая цена: {formatCurrency(parseFloat(auction.finalPrice))}
+                                Итоговая цена:{' '}
+                                {formatCurrency(parseFloat(auction.finalPrice))}
                               </p>
                             </div>
                             <span className="text-xs text-green-500">
-                              {auction.endTime ? formatDate(auction.endTime) : 'Дата неизвестна'}
+                              {auction.endTime
+                                ? formatDate(auction.endTime)
+                                : 'Дата неизвестна'}
                             </span>
                           </div>
                         </div>
@@ -758,23 +871,38 @@ export default function AdminUsers() {
                     </h3>
                     <div className="space-y-2">
                       {userActivityData.activeBids.map((bid) => (
-                        <div key={bid.id} className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                        <div
+                          key={bid.id}
+                          className="p-3 bg-blue-50 border border-blue-200 rounded-lg"
+                        >
                           <div className="flex justify-between items-start">
                             <div>
-                              <p className="font-medium text-blue-800">{bid.auctionTitle}</p>
-                              <p className="text-sm text-blue-600">
-                                Потрачено: {bid.bidCount} {bid.bidCount === 1 ? 'бид' : 'бидов'} ({(bid.bidCount * 0.01).toFixed(2)} сом)
+                              <p className="font-medium text-blue-800">
+                                {bid.auctionTitle}
                               </p>
                               <p className="text-sm text-blue-600">
-                                Текущая цена: {formatCurrency(parseFloat(bid.currentPrice))}
+                                Потрачено: {bid.bidCount}{' '}
+                                {bid.bidCount === 1 ? 'бид' : 'бидов'} (
+                                {(bid.bidCount * 0.01).toFixed(2)} сом)
                               </p>
-                              <span className={`inline-block px-2 py-1 text-xs rounded-full ${
-                                bid.status === 'live' ? 'bg-green-100 text-green-800' :
-                                bid.status === 'upcoming' ? 'bg-yellow-100 text-yellow-800' :
-                                'bg-gray-100 text-gray-800'
-                              }`}>
-                                {bid.status === 'live' ? 'Активный' :
-                                 bid.status === 'upcoming' ? 'Предстоящий' : 'Завершен'}
+                              <p className="text-sm text-blue-600">
+                                Текущая цена:{' '}
+                                {formatCurrency(parseFloat(bid.currentPrice))}
+                              </p>
+                              <span
+                                className={`inline-block px-2 py-1 text-xs rounded-full ${
+                                  bid.status === 'live'
+                                    ? 'bg-green-100 text-green-800'
+                                    : bid.status === 'upcoming'
+                                      ? 'bg-yellow-100 text-yellow-800'
+                                      : 'bg-gray-100 text-gray-800'
+                                }`}
+                              >
+                                {bid.status === 'live'
+                                  ? 'Активный'
+                                  : bid.status === 'upcoming'
+                                    ? 'Предстоящий'
+                                    : 'Завершен'}
                               </span>
                             </div>
                             <span className="text-xs text-blue-500">
@@ -796,20 +924,32 @@ export default function AdminUsers() {
                     </h3>
                     <div className="space-y-2">
                       {userActivityData.prebids.map((prebid) => (
-                        <div key={prebid.id} className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
+                        <div
+                          key={prebid.id}
+                          className="p-3 bg-purple-50 border border-purple-200 rounded-lg"
+                        >
                           <div className="flex justify-between items-start">
                             <div>
-                              <p className="font-medium text-purple-800">{prebid.auctionTitle}</p>
+                              <p className="font-medium text-purple-800">
+                                {prebid.auctionTitle}
+                              </p>
                               <p className="text-sm text-purple-600">
                                 Потрачено: 1 бид (0.01 сом)
                               </p>
-                              <span className={`inline-block px-2 py-1 text-xs rounded-full ${
-                                prebid.status === 'upcoming' ? 'bg-yellow-100 text-yellow-800' :
-                                prebid.status === 'live' ? 'bg-green-100 text-green-800' :
-                                'bg-gray-100 text-gray-800'
-                              }`}>
-                                {prebid.status === 'upcoming' ? 'Ожидает начала' :
-                                 prebid.status === 'live' ? 'Конвертирован в ставку' : 'Завершен'}
+                              <span
+                                className={`inline-block px-2 py-1 text-xs rounded-full ${
+                                  prebid.status === 'upcoming'
+                                    ? 'bg-yellow-100 text-yellow-800'
+                                    : prebid.status === 'live'
+                                      ? 'bg-green-100 text-green-800'
+                                      : 'bg-gray-100 text-gray-800'
+                                }`}
+                              >
+                                {prebid.status === 'upcoming'
+                                  ? 'Ожидает начала'
+                                  : prebid.status === 'live'
+                                    ? 'Конвертирован в ставку'
+                                    : 'Завершен'}
                               </span>
                             </div>
                             <span className="text-xs text-purple-500">
@@ -823,19 +963,23 @@ export default function AdminUsers() {
                 )}
 
                 {/* No Activity */}
-                {userActivityData.activeBids.length === 0 && 
-                 userActivityData.prebids.length === 0 && 
-                 userActivityData.wonAuctions.length === 0 && (
-                  <div className="text-center py-8">
-                    <i className="fas fa-inbox text-gray-300 text-4xl mb-4"></i>
-                    <p className="text-gray-500">У пользователя нет активности в аукционах</p>
-                  </div>
-                )}
+                {userActivityData.activeBids.length === 0 &&
+                  userActivityData.prebids.length === 0 &&
+                  userActivityData.wonAuctions.length === 0 && (
+                    <div className="text-center py-8">
+                      <i className="fas fa-inbox text-gray-300 text-4xl mb-4"></i>
+                      <p className="text-gray-500">
+                        У пользователя нет активности в аукционах
+                      </p>
+                    </div>
+                  )}
               </div>
             ) : (
               <div className="text-center py-8">
                 <i className="fas fa-exclamation-triangle text-yellow-300 text-4xl mb-4"></i>
-                <p className="text-gray-500">Не удалось загрузить данные о активности</p>
+                <p className="text-gray-500">
+                  Не удалось загрузить данные о активности
+                </p>
               </div>
             )}
           </DialogContent>

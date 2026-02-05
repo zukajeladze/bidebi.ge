@@ -21,7 +21,7 @@ export default function WelcomePreview() {
         <WelcomeModal 
           isOpen={showModal} 
           onClose={() => setShowModal(false)} 
-          username="Пользователь"
+          username="User"
         />
       </div>
     </div>
