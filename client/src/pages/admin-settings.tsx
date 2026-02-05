@@ -98,7 +98,7 @@ export default function AdminSettings() {
     defaultValues: {
       currency: settings?.currency || 'сом',
       currencySymbol: settings?.currencySymbol || 'сом',
-      siteName: settings?.siteName || 'QBIDS.KG',
+      siteName: settings?.siteName || 'bidebi.ge',
       language: settings?.language || 'ka',
       headerTagline: settings?.headerTagline || 'Penny Auctions in Georgia',
       footerDescription:
@@ -106,7 +106,7 @@ export default function AdminSettings() {
         'First penny auction platform in Georgia.',
       contactAddress: settings?.contactAddress || 'Tbilisi',
       contactPhone: settings?.contactPhone || '+995 555 123 456',
-      contactEmail: settings?.contactEmail || 'info@qbids.ge',
+      contactEmail: settings?.contactEmail || 'info@bidebi.ge.ge',
     },
   });
 
@@ -120,7 +120,7 @@ export default function AdminSettings() {
         language: settings.language,
         contactAddress: settings.contactAddress || 'Tbilisi',
         contactPhone: settings.contactPhone || '+995 555 123 456',
-        contactEmail: settings.contactEmail || 'info@qbids.ge',
+        contactEmail: settings.contactEmail || 'info@bidebi.ge.ge',
       });
     }
   }, [settings, form]);
@@ -278,7 +278,7 @@ export default function AdminSettings() {
                     id="siteName"
                     {...form.register('siteName')}
                     className="h-11 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20"
-                    placeholder="QBIDS.KG"
+                    placeholder="bidebi.ge"
                   />
                   {form.formState.errors.siteName && (
                     <p className="text-sm text-red-500">
@@ -416,7 +416,7 @@ export default function AdminSettings() {
                         type="email"
                         {...form.register('contactEmail')}
                         className="h-11 border-slate-200 focus:border-blue-500 focus:ring-blue-500/20"
-                        placeholder="info@qbids.kg"
+                        placeholder="info@bidebi.ge"
                       />
                       {form.formState.errors.contactEmail && (
                         <p className="text-sm text-red-500">
@@ -484,12 +484,12 @@ export default function AdminSettings() {
                       {t('adminSiteName')}
                     </div>
                     <div className="text-sm text-blue-700">
-                      {settings?.siteName || 'QBIDS.KG'}
+                      {settings?.siteName || 'bidebi.ge'}
                     </div>
                   </div>
                   <div className="text-lg font-bold text-blue-600">
                     <i className="fas fa-globe mr-2"></i>
-                    {settings?.siteName || 'QBIDS.KG'}
+                    {settings?.siteName || 'bidebi.ge'}
                   </div>
                 </div>
 
@@ -528,7 +528,7 @@ export default function AdminSettings() {
                       </div>
                       <div>
                         <i className="fas fa-envelope mr-2"></i>
-                        {settings?.contactEmail || 'info@qbids.kg'}
+                        {settings?.contactEmail || 'info@bidebi.ge'}
                       </div>
                     </div>
                   </div>

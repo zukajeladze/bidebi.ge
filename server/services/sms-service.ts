@@ -7,7 +7,7 @@ interface SMSOfficeResponse {
 class SMSService {
   private apiKey: string;
   private apiUrl: string = 'https://smsoffice.ge/api/v2/send/';
-  private sender: string = 'QBIDS';
+  private sender: string = 'bidebi.ge';
 
   constructor() {
     this.apiKey = process.env.SMSOFFICE_API_KEY || '';
@@ -27,13 +27,15 @@ class SMSService {
     }
 
     const cleanPhone = phoneNumber.replace(/\D/g, '');
-    
+
     if (!cleanPhone.startsWith('995')) {
-      console.error('Invalid Georgian phone number format. Must start with +995');
+      console.error(
+        'Invalid Georgian phone number format. Must start with +995',
+      );
       return false;
     }
 
-    const message = `თქვენი QBIDS.GE ვერიფიკაციის კოდი: ${code}`;
+    const message = `თქვენი bidebi.ge.GE ვერიფიკაციის კოდი: ${code}`;
 
     try {
       const params = new URLSearchParams({
@@ -58,7 +60,9 @@ class SMSService {
         data = JSON.parse(responseText);
       } catch (parseError) {
         console.error('Failed to parse SMSOffice response:', responseText);
-        console.log(`OTP sent to ${phoneNumber} (assuming success based on response)`);
+        console.log(
+          `OTP sent to ${phoneNumber} (assuming success based on response)`,
+        );
         return true;
       }
 
@@ -66,7 +70,10 @@ class SMSService {
         console.log(`OTP sent successfully to ${phoneNumber}`);
         return true;
       } else {
-        console.error('Failed to send OTP:', data.error || data.message || data);
+        console.error(
+          'Failed to send OTP:',
+          data.error || data.message || data,
+        );
         return false;
       }
     } catch (error) {

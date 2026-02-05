@@ -70,7 +70,7 @@ export default function TopUp() {
 
   useEffect(() => {
     // Set page title
-    document.title = `${t('topUpBalance')} - QBIDS.GE`;
+    document.title = `${t('topUpBalance')} - bidebi.ge.GE`;
 
     // Set viewport meta tag
     const viewportMeta = document.querySelector('meta[name="viewport"]');

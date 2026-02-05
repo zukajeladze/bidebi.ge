@@ -10,7 +10,7 @@ export default function PaymentSuccess() {
   const [, navigate] = useLocation();
 
   useEffect(() => {
-    document.title = `${t('paymentSuccessful')} - QBIDS.RU`;
+    document.title = `${t('paymentSuccessful')} - bidebi.ge`;
   }, [t]);
 
   return (
@@ -30,7 +30,8 @@ export default function PaymentSuccess() {
 
           {/* Message */}
           <p className="text-lg text-slate-600 mb-8">
-            Ваш платеж был успешно обработан. Биды будут зачислены на ваш счет в течение нескольких минут.
+            Ваш платеж был успешно обработан. Биды будут зачислены на ваш счет в
+            течение нескольких минут.
           </p>
 
           {/* Info Box */}
@@ -38,7 +39,9 @@ export default function PaymentSuccess() {
             <div className="flex items-start space-x-3">
               <i className="fas fa-info-circle text-blue-600 text-xl mt-1"></i>
               <div className="text-left">
-                <h3 className="font-semibold text-slate-900 mb-2">Что дальше?</h3>
+                <h3 className="font-semibold text-slate-900 mb-2">
+                  Что дальше?
+                </h3>
                 <ul className="text-sm text-slate-600 space-y-1">
                   <li>✓ Биды автоматически зачислены на ваш счет</li>
                   <li>✓ Проверьте ваш новый баланс в правом верхнем углу</li>
@@ -71,4 +74,3 @@ export default function PaymentSuccess() {
     </div>
   );
 }
-

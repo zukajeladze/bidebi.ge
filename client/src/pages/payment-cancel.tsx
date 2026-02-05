@@ -10,7 +10,7 @@ export default function PaymentCancel() {
   const [, navigate] = useLocation();
 
   useEffect(() => {
-    document.title = `${t('paymentCancelled')} - QBIDS.RU`;
+    document.title = `${t('paymentCancelled')} - bidebi.ge`;
   }, [t]);
 
   return (
@@ -30,7 +30,8 @@ export default function PaymentCancel() {
 
           {/* Message */}
           <p className="text-lg text-slate-600 mb-8">
-            Вы отменили процесс оплаты. Не беспокойтесь, с вашего счета не было списано средств.
+            Вы отменили процесс оплаты. Не беспокойтесь, с вашего счета не было
+            списано средств.
           </p>
 
           {/* Info Box */}
@@ -38,12 +39,15 @@ export default function PaymentCancel() {
             <div className="flex items-start space-x-3">
               <i className="fas fa-question-circle text-blue-600 text-xl mt-1"></i>
               <div className="text-left">
-                <h3 className="font-semibold text-slate-900 mb-2">Нужна помощь?</h3>
+                <h3 className="font-semibold text-slate-900 mb-2">
+                  Нужна помощь?
+                </h3>
                 <p className="text-sm text-slate-600 mb-2">
-                  Если у вас возникли проблемы с оплатой, наша служба поддержки всегда готова помочь.
+                  Если у вас возникли проблемы с оплатой, наша служба поддержки
+                  всегда готова помочь.
                 </p>
                 <ul className="text-sm text-slate-600 space-y-1">
-                  <li>📧 Email: info@qbids.ru</li>
+                  <li>📧 Email: info@bidebi.ge</li>
                   <li>📱 Телефон: +7 (495) 123-4567</li>
                   <li>💬 Онлайн-чат доступен 24/7</li>
                 </ul>
@@ -74,4 +78,3 @@ export default function PaymentCancel() {
     </div>
   );
 }
-

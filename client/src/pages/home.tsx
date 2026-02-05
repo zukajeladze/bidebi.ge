@@ -187,7 +187,7 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
 
 export default function Home() {
   useDocumentTitle(
-    'QBIDS.GE - №1 პენი-აუქციონები საქართველოში | მოიგე iPhone ',
+    'bidebi.ge.GE - №1 პენი-აუქციონები საქართველოში | მოიგე iPhone ',
   );
 
   const { connected } = useSocket();

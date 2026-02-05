@@ -16,7 +16,7 @@ export function useSettings() {
   const defaultSettings = {
     currency: '₾',
     currencySymbol: '₾',
-    siteName: 'QBIDS.GE',
+    siteName: 'bidebi.ge.GE',
     language: 'ka',
     headerTagline: 'პენი-აუქციონები საქართველოში',
     footerDescription:

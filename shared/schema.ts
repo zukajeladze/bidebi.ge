@@ -146,7 +146,7 @@ export const settings = pgTable('settings', {
     .default(sql`gen_random_uuid()`),
   currency: text('currency').notNull().default('₾'),
   currencySymbol: text('currency_symbol').notNull().default('₾'),
-  siteName: text('site_name').notNull().default('QBIDS.GE'),
+  siteName: text('site_name').notNull().default('bidebi.ge.GE'),
   language: text('language').notNull().default('ka'),
   headerTagline: text('header_tagline').default('პენი-აუქციონები საქართველოში'),
   footerDescription: text('footer_description').default(
@@ -154,7 +154,7 @@ export const settings = pgTable('settings', {
   ),
   contactAddress: text('contact_address').default('თბილისი, საქართველო'),
   contactPhone: text('contact_phone').default('+995 593 09 00 00'),
-  contactEmail: text('contact_email').default('info@qbids.ge'),
+  contactEmail: text('contact_email').default('info@bidebi.ge.ge'),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
 

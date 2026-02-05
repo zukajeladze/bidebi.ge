@@ -1,42 +1,46 @@
-import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
-import { useDocumentTitle } from "@/hooks/use-document-title";
-import { useLanguage } from "@/hooks/use-language";
-import { useSocket } from "@/hooks/use-socket";
-import { Header } from "@/components/header";
-import { Sidebar } from "@/components/sidebar";
-import { UpcomingAuctionCard } from "@/components/upcoming-auction-card";
-import { Button } from "@/components/ui/button";
-import { socketService } from "@/lib/socket";
-import type { Auction } from "@/types/auction";
+import { useQuery } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
+import { useDocumentTitle } from '@/hooks/use-document-title';
+import { useLanguage } from '@/hooks/use-language';
+import { useSocket } from '@/hooks/use-socket';
+import { Header } from '@/components/header';
+import { Sidebar } from '@/components/sidebar';
+import { UpcomingAuctionCard } from '@/components/upcoming-auction-card';
+import { Button } from '@/components/ui/button';
+import { socketService } from '@/lib/socket';
+import type { Auction } from '@/types/auction';
 
 export default function Auctions() {
   const [timers, setTimers] = useState<Record<string, number>>({});
   const { t } = useLanguage();
   const { connected } = useSocket();
 
-  useDocumentTitle(`${t("upcomingAuctions")} - QBIDS.GE | მალე დაიწყება ახალი აუქციონები`);
+  useDocumentTitle(
+    `${t('upcomingAuctions')} - bidebi.ge.GE | მალე დაიწყება ახალი აუქციონები`,
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [currentTime, setCurrentTime] = useState(Date.now());
   const auctionsPerPage = 12;
-  
+
   const { data: auctionsData, isLoading } = useQuery<{
     live: Auction[];
     upcoming: Auction[];
     finished: Auction[];
   }>({
-    queryKey: ["/api/auctions"],
+    queryKey: ['/api/auctions'],
   });
 
   // Fetch user's prebids to disable prebid button if already placed
   const { data: userPrebids } = useQuery<Array<{ auction: Auction }>>({
-    queryKey: ["/api/prebids/user"],
+    queryKey: ['/api/prebids/user'],
     enabled: true,
     staleTime: 30000,
   });
-  const userPrebidAuctionIds = new Set((userPrebids || []).map((p) => p.auction.id));
+  const userPrebidAuctionIds = new Set(
+    (userPrebids || []).map((p) => p.auction.id),
+  );
   const { data: timerData } = useQuery<Record<string, number>>({
-    queryKey: ["/api/timers"],
+    queryKey: ['/api/timers'],
     refetchInterval: 1000,
   });
 
@@ -64,8 +68,7 @@ export default function Auctions() {
       };
     }
   }, [connected]);
-  
-  
+
   const calculateTimeToStart = (startTime: string): number => {
     const start = new Date(startTime).getTime();
     return Math.max(0, Math.floor((start - currentTime) / 1000));
@@ -96,8 +99,10 @@ export default function Auctions() {
 
   // Pagination logic
   const upcomingAuctions = auctionsData?.upcoming || [];
-  const sortedAuctions = upcomingAuctions.sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime());
-  
+  const sortedAuctions = upcomingAuctions.sort(
+    (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime(),
+  );
+
   const totalPages = Math.ceil(sortedAuctions.length / auctionsPerPage);
   const startIndex = (currentPage - 1) * auctionsPerPage;
   const endIndex = startIndex + auctionsPerPage;
@@ -115,7 +120,7 @@ export default function Auctions() {
         <div className="flex items-center justify-center py-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-gray-600">{t("loadingAuctions")}</p>
+            <p className="text-gray-600">{t('loadingAuctions')}</p>
           </div>
         </div>
       </div>
@@ -125,7 +130,7 @@ export default function Auctions() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <main className="max-w-[1504px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 relative">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-3">
@@ -136,12 +141,14 @@ export default function Auctions() {
                   <i className="fas fa-clock text-yellow-600 text-lg"></i>
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">{t("upcomingAuctions")}</h1>
+                  <h1 className="text-3xl font-bold text-gray-900">
+                    {t('upcomingAuctions')}
+                  </h1>
                   <p className="text-gray-600">
-                    {sortedAuctions.length} {t("auctionsAwaitingStart")}
+                    {sortedAuctions.length} {t('auctionsAwaitingStart')}
                     {totalPages > 1 && (
                       <span className="ml-2 text-sm text-gray-500">
-                        ({t("pageOf")} {currentPage} {t("of")} {totalPages})
+                        ({t('pageOf')} {currentPage} {t('of')} {totalPages})
                       </span>
                     )}
                   </p>
@@ -153,8 +160,12 @@ export default function Auctions() {
             {!sortedAuctions.length ? (
               <div className="text-center py-20">
                 <i className="fas fa-clock text-gray-300 text-6xl mb-6"></i>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-3">{t("noUpcomingAuctions")}</h3>
-                <p className="text-gray-600 text-lg">{t("newAuctionsWillAppear")}</p>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                  {t('noUpcomingAuctions')}
+                </h3>
+                <p className="text-gray-600 text-lg">
+                  {t('newAuctionsWillAppear')}
+                </p>
               </div>
             ) : (
               <>
@@ -197,9 +208,15 @@ export default function Auctions() {
                     {(() => {
                       const pages = [];
                       const showPages = 5; // Show max 5 page numbers
-                      let startPage = Math.max(1, currentPage - Math.floor(showPages / 2));
-                      let endPage = Math.min(totalPages, startPage + showPages - 1);
-                      
+                      let startPage = Math.max(
+                        1,
+                        currentPage - Math.floor(showPages / 2),
+                      );
+                      let endPage = Math.min(
+                        totalPages,
+                        startPage + showPages - 1,
+                      );
+
                       if (endPage - startPage + 1 < showPages) {
                         startPage = Math.max(1, endPage - showPages + 1);
                       }
@@ -208,13 +225,13 @@ export default function Auctions() {
                         pages.push(
                           <Button
                             key={i}
-                            variant={currentPage === i ? "default" : "outline"}
+                            variant={currentPage === i ? 'default' : 'outline'}
                             size="sm"
                             onClick={() => goToPage(i)}
                             className="min-w-[40px]"
                           >
                             {i}
-                          </Button>
+                          </Button>,
                         );
                       }
                       return pages;

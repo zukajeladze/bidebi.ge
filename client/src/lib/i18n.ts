@@ -337,7 +337,7 @@ export const translations = {
     // Welcome Modal
     welcomeTitle: 'Welcome, {username}!',
     welcomeDescription:
-      'Congratulations on successfully registering on QBIDS.KG',
+      'Congratulations on successfully registering on bidebi.ge',
     freeBids: '5 free bids!',
     giftForNewUsers: 'Gift for new users',
     welcomeGiftMessage:
@@ -445,7 +445,8 @@ export const translations = {
 
     // How It Works Page
     howPennyAuctionsWorkTitle: 'How do penny auctions work?',
-    simpleGuideSubtitle: 'A simple guide to participating in qbids.kg auctions',
+    simpleGuideSubtitle:
+      'A simple guide to participating in bidebi.ge auctions',
     step1Title: 'Registration',
     step1Desc:
       'Create an account and top up your balance to participate in auctions',
@@ -1065,7 +1066,7 @@ export const translations = {
 
     // Welcome Modal
     welcomeTitle: 'კეთილი იყოს თქვენი მობრძანება, {username}!',
-    welcomeDescription: 'გილოცავთ QBIDS.KG-ზე წარმატებულ რეგისტრაციას',
+    welcomeDescription: 'გილოცავთ bidebi.ge-ზე წარმატებულ რეგისტრაციას',
     freeBids: '5 უფასო ფსონი!',
     giftForNewUsers: 'საჩუქარი ახალი მომხმარებლებისთვის',
     welcomeGiftMessage:
@@ -1173,7 +1174,7 @@ export const translations = {
     // How It Works Page
     howPennyAuctionsWorkTitle: 'როგორ მუშაობს პენი აუქციონები?',
     simpleGuideSubtitle:
-      'მარტივი გზამკვლევი qbids.kg აუქციონებში მონაწილეობისთვის',
+      'მარტივი გზამკვლევი bidebi.ge აუქციონებში მონაწილეობისთვის',
     step1Title: 'რეგისტრაცია',
     step1Desc:
       'შექმენით ანგარიში და შეავსეთ ბალანსი აუქციონებში მონაწილეობისთვის',

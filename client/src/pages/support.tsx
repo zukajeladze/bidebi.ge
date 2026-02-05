@@ -1,97 +1,131 @@
-import { useDocumentTitle } from "@/hooks/use-document-title";
-import { Header } from "@/components/header";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { useDocumentTitle } from '@/hooks/use-document-title';
+import { Header } from '@/components/header';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 export default function Support() {
-  useDocumentTitle("მხარდაჭერის სამსახური - QBIDS.GE | დახმარება და მხარდაჭერა");
+  useDocumentTitle(
+    'მხარდაჭერის სამსახური - bidebi.ge.GE | დახმარება და მხარდაჭერა',
+  );
 
   const supportMethods = [
     {
-      icon: "fas fa-envelope",
-      title: "ელექტრონული ფოსტა",
-      description: "მოგვწერეთ ელ-ფოსტაზე დეტალური დახმარების მისაღებად",
-      contact: "support@qbids.ge",
-      responseTime: "24 საათის განმავლობაში",
-      action: "დაკავშირება",
-      color: "blue"
+      icon: 'fas fa-envelope',
+      title: 'ელექტრონული ფოსტა',
+      description: 'მოგვწერეთ ელ-ფოსტაზე დეტალური დახმარების მისაღებად',
+      contact: 'support@bidebi.ge.ge',
+      responseTime: '24 საათის განმავლობაში',
+      action: 'დაკავშირება',
+      color: 'blue',
     },
     {
-      icon: "fab fa-whatsapp",
-      title: "WhatsApp",
-      description: "სწრაფი დახმარება WhatsApp მესენჯერის საშუალებით",
-      contact: "+995 593 09 00 00",
-      responseTime: "სამუშაო საათებში",
-      action: "დაკავშირება",
-      color: "green"
+      icon: 'fab fa-whatsapp',
+      title: 'WhatsApp',
+      description: 'სწრაფი დახმარება WhatsApp მესენჯერის საშუალებით',
+      contact: '+995 593 09 00 00',
+      responseTime: 'სამუშაო საათებში',
+      action: 'დაკავშირება',
+      color: 'green',
     },
     {
-      icon: "fab fa-telegram",
-      title: "Telegram",
-      description: "დაგვიკავშირდით Telegram-ის საშუალებით ოპერატიული მხარდაჭერისთვის",
-      contact: "@qbids_support",
-      responseTime: "სამუშაო საათებში",
-      action: "დაკავშირება",
-      color: "blue"
-    }
+      icon: 'fab fa-telegram',
+      title: 'Telegram',
+      description:
+        'დაგვიკავშირდით Telegram-ის საშუალებით ოპერატიული მხარდაჭერისთვის',
+      contact: '@bidebi.ge_support',
+      responseTime: 'სამუშაო საათებში',
+      action: 'დაკავშირება',
+      color: 'blue',
+    },
   ];
 
   const faqItems = [
     {
-      question: "როგორ დავიწყო აუქციონებში მონაწილეობა?",
-      answer: "დარეგისტრირდით საიტზე, შეავსეთ ფსონების ბალანსი და აირჩიეთ თქვენთვის საინტერესო აუქციონი. თითოეული ფსონი ღირს ერთი ფსონი."
+      question: 'როგორ დავიწყო აუქციონებში მონაწილეობა?',
+      answer:
+        'დარეგისტრირდით საიტზე, შეავსეთ ფსონების ბალანსი და აირჩიეთ თქვენთვის საინტერესო აუქციონი. თითოეული ფსონი ღირს ერთი ფსონი.',
     },
     {
-      question: "რა არის პენი-აუქციონი?",
-      answer: "პენი-აუქციონი არის აუქციონის ტიპი, სადაც პროდუქტის ფასი იზრდება მცირე თანხით ყოველი ფსონის შემდეგ, ხოლო აუქციონის დრო გრძელდება."
+      question: 'რა არის პენი-აუქციონი?',
+      answer:
+        'პენი-აუქციონი არის აუქციონის ტიპი, სადაც პროდუქტის ფასი იზრდება მცირე თანხით ყოველი ფსონის შემდეგ, ხოლო აუქციონის დრო გრძელდება.',
     },
     {
-      question: "როგორ შევავსო ფსონების ბალანსი?",
-      answer: "გადადით თქვენს პროფილში და აირჩიეთ 'ბალანსის შევსება'. ხელმისაწვდომია გადახდის სხვადასხვა საშუალებები: საბანკო ბარათები, ელექტრონული საფულეები."
+      question: 'როგორ შევავსო ფსონების ბალანსი?',
+      answer:
+        "გადადით თქვენს პროფილში და აირჩიეთ 'ბალანსის შევსება'. ხელმისაწვდომია გადახდის სხვადასხვა საშუალებები: საბანკო ბარათები, ელექტრონული საფულეები.",
     },
     {
-      question: "რა ხდება აუქციონში გამარჯვების შემთხვევაში?",
-      answer: "გილოცავთ! გამარჯვების შემდეგ თქვენთან დაკავშირდება ჩვენი მხარდაჭერის სამსახური პროდუქტის მიწოდების ან მიღების ორგანიზებისთვის."
+      question: 'რა ხდება აუქციონში გამარჯვების შემთხვევაში?',
+      answer:
+        'გილოცავთ! გამარჯვების შემდეგ თქვენთან დაკავშირდება ჩვენი მხარდაჭერის სამსახური პროდუქტის მიწოდების ან მიღების ორგანიზებისთვის.',
     },
     {
-      question: "შესაძლებელია თუ არა დახარჯული ფსონების დაბრუნება?",
-      answer: "აუქციონის დროს დახარჯული ფსონები არ ბრუნდება. ეს არის პენი-აუქციონების სტანდარტული წესი."
-    }
+      question: 'შესაძლებელია თუ არა დახარჯული ფსონების დაბრუნება?',
+      answer:
+        'აუქციონის დროს დახარჯული ფსონები არ ბრუნდება. ეს არის პენი-აუქციონების სტანდარტული წესი.',
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <main className="max-w-[1504px] mx-auto py-8 px-4">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
             <i className="fas fa-headset text-white text-3xl"></i>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">მხარდაჭერის სამსახური</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            მხარდაჭერის სამსახური
+          </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            ჩვენ მზად ვართ დაგეხმაროთ ნებისმიერ დროს. აირჩიეთ კომუნიკაციის სასურველი საშუალება ან იპოვეთ პასუხები ხშირად დასმულ კითხვებზე.
+            ჩვენ მზად ვართ დაგეხმაროთ ნებისმიერ დროს. აირჩიეთ კომუნიკაციის
+            სასურველი საშუალება ან იპოვეთ პასუხები ხშირად დასმულ კითხვებზე.
           </p>
         </div>
 
         {/* Contact Methods */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {supportMethods.map((method, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow" data-testid={`card-support-${method.title.toLowerCase()}`}>
+            <Card
+              key={index}
+              className="text-center hover:shadow-lg transition-shadow"
+              data-testid={`card-support-${method.title.toLowerCase()}`}
+            >
               <CardHeader>
-                <div className={`w-16 h-16 bg-${method.color}-100 rounded-full flex items-center justify-center mx-auto mb-4`}>
-                  <i className={`${method.icon} text-${method.color}-600 text-2xl`}></i>
+                <div
+                  className={`w-16 h-16 bg-${method.color}-100 rounded-full flex items-center justify-center mx-auto mb-4`}
+                >
+                  <i
+                    className={`${method.icon} text-${method.color}-600 text-2xl`}
+                  ></i>
                 </div>
                 <CardTitle className="text-xl">{method.title}</CardTitle>
                 <CardDescription>{method.description}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  <p className="font-semibold text-gray-900" data-testid={`text-contact-${index}`}>{method.contact}</p>
+                  <p
+                    className="font-semibold text-gray-900"
+                    data-testid={`text-contact-${index}`}
+                  >
+                    {method.contact}
+                  </p>
                   <p className="text-sm text-gray-600">{method.responseTime}</p>
-                  <Button className="w-full mt-4" variant="outline" data-testid={`button-contact-${index}`}>
+                  <Button
+                    className="w-full mt-4"
+                    variant="outline"
+                    data-testid={`button-contact-${index}`}
+                  >
                     {method.action}
                   </Button>
                 </div>
@@ -108,7 +142,8 @@ export default function Support() {
               ხშირად დასმული კითხვები
             </CardTitle>
             <CardDescription>
-              პასუხები ყველაზე პოპულარულ კითხვებზე QBIDS.GE-ს მუშაობის შესახებ
+              პასუხები ყველაზე პოპულარულ კითხვებზე bidebi.ge.GE-ს მუშაობის
+              შესახებ
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -118,10 +153,10 @@ export default function Support() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {item.question}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {item.answer}
-                  </p>
-                  {index < faqItems.length - 1 && <Separator className="mt-6" />}
+                  <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+                  {index < faqItems.length - 1 && (
+                    <Separator className="mt-6" />
+                  )}
                 </div>
               ))}
             </div>
@@ -139,7 +174,9 @@ export default function Support() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">ონლაინ მხარდაჭერა</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">
+                  ონლაინ მხარდაჭერა
+                </h3>
                 <div className="space-y-2 text-gray-600">
                   <div className="flex justify-between">
                     <span>ორშაბათი - პარასკევი:</span>
@@ -156,7 +193,9 @@ export default function Support() {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">ელ-ფოსტის მხარდაჭერა</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">
+                  ელ-ფოსტის მხარდაჭერა
+                </h3>
                 <div className="space-y-2 text-gray-600">
                   <p>მუშაობს 24/7</p>
                   <p>პასუხი 24 საათის განმავლობაში</p>
