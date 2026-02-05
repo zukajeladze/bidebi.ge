@@ -5,8 +5,11 @@ import { pool } from "./db";
 const PgSession = connectPgSimple(session);
 
 export function createSessionMiddleware() {
+  const isProduction = process.env.NODE_ENV === 'production';
+
   console.log('Creating session middleware with config:', {
     nodeEnv: process.env.NODE_ENV,
+    isProduction,
     cookieSecure: process.env.COOKIE_SECURE,
     hasSessionSecret: !!process.env.SESSION_SECRET,
     hasDatabaseUrl: !!process.env.DATABASE_URL
@@ -22,10 +25,12 @@ export function createSessionMiddleware() {
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: true, // REQUIRED when sameSite is "none" - Replit proxy handles HTTPS
+      // In development (localhost): secure=false, sameSite=lax
+      // In production (HTTPS): secure=true, sameSite=none
+      secure: isProduction,
       httpOnly: true,
       maxAge: 30 * 60 * 1000, // 30 minutes (banking standard)
-      sameSite: "none", // Required for Replit proxy/iframe environment
+      sameSite: isProduction ? "none" : "lax",
     },
   });
 }

@@ -136,7 +136,7 @@ export function AuthModal({ isOpen, onClose, onLoginSuccess }: AuthModalProps) {
     } catch (error) {
       setValidationState((prev) => ({
         ...prev,
-        [field]: { valid: false, message: 'Ошибка проверки' },
+        [field]: { valid: false, message: t('validationError') },
       }));
     } finally {
       setValidatingField(null);

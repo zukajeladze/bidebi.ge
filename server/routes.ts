@@ -29,6 +29,53 @@ const errorMessages = {
     emailAlreadyRegistered: "Email уже зарегистрирован",
     usernameAvailable: "Имя пользователя доступно",
     usernameTaken: "Имя пользователя уже занято",
+    phoneAvailable: "Номер телефона доступен",
+    phoneAlreadyRegistered: "Номер телефона уже зарегистрирован",
+    serviceUnavailable: "Сервис недоступен",
+    failedToCreatePaymentSession: "Не удалось создать платежную сессию",
+    internalServerError: "Внутренняя ошибка сервера",
+    failedToRefreshBalance: "Не удалось обновить баланс",
+    invalidAuctionData: "Неверные данные аукциона",
+    invalidSettings: "Неверные настройки",
+    errorFetchingAuctionStats: "Ошибка при получении статистики аукциона",
+    errorDeletingAuction: "Ошибка при удалении аукциона",
+    errorStartingAuction: "Ошибка при запуске аукциона",
+    invalidBotData: "Неверные данные бота",
+    failedToFetchBots: "Не удалось получить данные о ботах",
+    errorFetchingUsers: "Ошибка при получении пользователей",
+    errorFetchingRegistrations: "Ошибка при получении данных о регистрациях",
+    errorFetchingUserActivity: "Ошибка при получении активности пользователя",
+    errorUpdatingUser: "Не удалось обновить пользователя",
+    errorDeletingUser: "Ошибка при удалении пользователя",
+    errorFetchingSettings: "Ошибка при получении настроек",
+    errorUpdatingSettings: "Не удалось обновить настройки",
+    failedToFetchTimerDetails: "Не удалось получить детали таймера",
+    invalidRequest: "Неверный запрос",
+    auctionNotFound: "Аукцион не найден",
+    forbidden: "Доступ запрещен",
+    failedToPlaceBid: "Не удалось сделать ставку",
+    mustBe18OrOlder: "Вам должно быть минимум 18 лет для регистрации",
+    cannotDeleteOwnAccount: "Нельзя удалить собственный аккаунт",
+    invalidPackageId: "Неверный ID пакета",
+    invalidSignature: "Неверная подпись",
+    alreadyProcessed: "Уже обработано",
+    unknownProductId: "Неизвестный ID продукта",
+    couldNotMatchPaymentToUser: "Не удалось сопоставить платеж с пользователем",
+    transactionNotFound: "Транзакция не найдена",
+    transactionAlreadyCompleted: "Транзакция уже завершена",
+    balanceUpdatedSuccessfully: "Баланс успешно обновлен",
+    failedToSendOtp: "Не удалось отправить OTP. Пожалуйста, попробуйте снова.",
+    phoneNumberVerifiedSuccessfully: "Номер телефона успешно подтвержден",
+    failedToVerifyOtp: "Не удалось подтвердить OTP",
+    invalidOrExpiredVerificationId: "Неверный или истекший ID подтверждения",
+    phoneNumberDoesNotMatchVerification: "Номер телефона не совпадает с подтверждением",
+    invalidVerificationPurpose: "Неверная цель подтверждения",
+    verificationHasExpired: "Подтверждение истекло",
+    verificationExpiredRequestNewOtp: "Подтверждение истекло. Пожалуйста, запросите новый OTP",
+    phoneNumberMustBeVerifiedWithOtp: "Номер телефона должен быть подтвержден с помощью OTP перед регистрацией",
+    sessionError: "Ошибка сессии",
+    invalidOrExpiredRefreshToken: "Неверный или истекший токен обновления",
+    refreshTokenNotFoundOrRevoked: "Токен обновления не найден или был отозван",
   },
   en: {
     invalidCredentials: "Invalid credentials",
@@ -42,6 +89,53 @@ const errorMessages = {
     emailAlreadyRegistered: "Email is already registered",
     usernameAvailable: "Username is available",
     usernameTaken: "Username is already taken",
+    phoneAvailable: "Phone number is available",
+    phoneAlreadyRegistered: "Phone number is already registered",
+    serviceUnavailable: "Service unavailable",
+    failedToCreatePaymentSession: "Failed to create payment session",
+    internalServerError: "Internal server error",
+    failedToRefreshBalance: "Failed to refresh balance",
+    invalidAuctionData: "Invalid auction data",
+    invalidSettings: "Invalid settings",
+    errorFetchingAuctionStats: "Error fetching auction stats",
+    errorDeletingAuction: "Error deleting auction",
+    errorStartingAuction: "Error starting auction",
+    invalidBotData: "Invalid bot data",
+    failedToFetchBots: "Failed to fetch bots with auction status",
+    errorFetchingUsers: "Error fetching users",
+    errorFetchingRegistrations: "Error fetching registrations",
+    errorFetchingUserActivity: "Error fetching user activity",
+    errorUpdatingUser: "Failed to update user",
+    errorDeletingUser: "Error deleting user",
+    errorFetchingSettings: "Error fetching settings",
+    errorUpdatingSettings: "Failed to update settings",
+    failedToFetchTimerDetails: "Failed to fetch timer details",
+    invalidRequest: "Invalid request",
+    auctionNotFound: "Auction not found",
+    forbidden: "Access denied",
+    failedToPlaceBid: "Failed to place bid",
+    mustBe18OrOlder: "You must be at least 18 years old to register",
+    cannotDeleteOwnAccount: "Cannot delete your own account",
+    invalidPackageId: "Invalid package ID",
+    invalidSignature: "Invalid signature",
+    alreadyProcessed: "Already processed",
+    unknownProductId: "Unknown product ID",
+    couldNotMatchPaymentToUser: "Could not match payment to user",
+    transactionNotFound: "Transaction not found",
+    transactionAlreadyCompleted: "Transaction already completed",
+    balanceUpdatedSuccessfully: "Balance updated successfully",
+    failedToSendOtp: "Failed to send OTP. Please try again.",
+    phoneNumberVerifiedSuccessfully: "Phone number verified successfully",
+    failedToVerifyOtp: "Failed to verify OTP",
+    invalidOrExpiredVerificationId: "Invalid or expired verification ID",
+    phoneNumberDoesNotMatchVerification: "Phone number does not match verification",
+    invalidVerificationPurpose: "Invalid verification purpose",
+    verificationHasExpired: "Verification has expired",
+    verificationExpiredRequestNewOtp: "Verification has expired. Please request a new OTP",
+    phoneNumberMustBeVerifiedWithOtp: "Phone number must be verified with OTP before registration",
+    sessionError: "Session error",
+    invalidOrExpiredRefreshToken: "Invalid or expired refresh token",
+    refreshTokenNotFoundOrRevoked: "Refresh token not found or has been revoked",
   },
   ka: {
     invalidCredentials: "არასწორი სავისე მონაცემები",
@@ -55,6 +149,53 @@ const errorMessages = {
     emailAlreadyRegistered: "ელფოსტა უკვე დარეგისტრირებულია",
     usernameAvailable: "მომხმარებლის სახელი ხელმისაწვდომია",
     usernameTaken: "მომხმარებლის სახელი უკვე დაკავებულია",
+    phoneAvailable: "ტელეფონის ნომერი ხელმისაწვდომია",
+    phoneAlreadyRegistered: "ტელეფონის ნომერი უკვე დარეგისტრირებულია",
+    serviceUnavailable: "სერვისი მიუწვდომელია",
+    failedToCreatePaymentSession: "გადახდის სესიის შექმნა ვერ მოხერხდა",
+    internalServerError: "სერვერის შიდა შეცდომა",
+    failedToRefreshBalance: "ბალანსის განახლება ვერ მოხერხდა",
+    invalidAuctionData: "აუქციონის არასწორი მონაცემები",
+    invalidSettings: "არასწორი პარამეტრები",
+    errorFetchingAuctionStats: "აუქციონის სტატისტიკის მიღების შეცდომა",
+    errorDeletingAuction: "აუქციონის წაშლის შეცდომა",
+    errorStartingAuction: "აუქციონის დაწყების შეცდომა",
+    invalidBotData: "ბოტის არასწორი მონაცემები",
+    failedToFetchBots: "ბოტების მონაცემების მიღება ვერ მოხერხდა",
+    errorFetchingUsers: "მომხმარებლების მიღების შეცდომა",
+    errorFetchingRegistrations: "რეგისტრაციების მონაცემების მიღების შეცდომა",
+    errorFetchingUserActivity: "მომხმარებლის აქტივობის მიღების შეცდომა",
+    errorUpdatingUser: "მომხმარებლის განახლება ვერ მოხერხდა",
+    errorDeletingUser: "მომხმარებლის წაშლის შეცდომა",
+    errorFetchingSettings: "პარამეტრების მიღების შეცდომა",
+    errorUpdatingSettings: "პარამეტრების განახლება ვერ მოხერხდა",
+    failedToFetchTimerDetails: "ტაიმერის დეტალების მიღება ვერ მოხერხდა",
+    invalidRequest: "არასწორი მოთხოვნა",
+    auctionNotFound: "აუქციონი ვერ მოიძებნა",
+    forbidden: "წვდომა აკრძალულია",
+    failedToPlaceBid: "ფსონის დადება ვერ მოხერხდა",
+    mustBe18OrOlder: "თქვენ უნდა იყოთ მინიმუმ 18 წლის რეგისტრაციისთვის",
+    cannotDeleteOwnAccount: "საკუთარი ანგარიშის წაშლა შეუძლებელია",
+    invalidPackageId: "არასწორი პაკეტის ID",
+    invalidSignature: "არასწორი ხელმოწერა",
+    alreadyProcessed: "უკვე დამუშავებულია",
+    unknownProductId: "უცნობი პროდუქტის ID",
+    couldNotMatchPaymentToUser: "გადახდის მომხმარებელთან დაკავშირება ვერ მოხერხდა",
+    transactionNotFound: "ტრანზაქცია ვერ მოიძებნა",
+    transactionAlreadyCompleted: "ტრანზაქცია უკვე დასრულებულია",
+    balanceUpdatedSuccessfully: "ბალანსი წარმატებით განახლდა",
+    failedToSendOtp: "OTP-ის გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
+    phoneNumberVerifiedSuccessfully: "ტელეფონის ნომერი წარმატებით დადასტურდა",
+    failedToVerifyOtp: "OTP-ის დადასტურება ვერ მოხერხდა",
+    invalidOrExpiredVerificationId: "არასწორი ან ვადაგასული დადასტურების ID",
+    phoneNumberDoesNotMatchVerification: "ტელეფონის ნომერი არ ემთხვევა დადასტურებას",
+    invalidVerificationPurpose: "არასწორი დადასტურების მიზანი",
+    verificationHasExpired: "დადასტურების ვადა ამოიწურა",
+    verificationExpiredRequestNewOtp: "დადასტურების ვადა ამოიწურა. გთხოვთ, მოითხოვოთ ახალი OTP",
+    phoneNumberMustBeVerifiedWithOtp: "ტელეფონის ნომერი უნდა დადასტურდეს OTP-ით რეგისტრაციამდე",
+    sessionError: "სესიის შეცდომა",
+    invalidOrExpiredRefreshToken: "არასწორი ან ვადაგასული განახლების ტოკენი",
+    refreshTokenNotFoundOrRevoked: "განახლების ტოკენი ვერ მოიძებნა ან გაუქმდა",
   },
 };
 
@@ -97,21 +238,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
   setSocketIO(io);
 
   // Health check endpoint for Render.com monitoring
-  app.get("/health", async (_req, res) => {
+  app.get("/health", async (req, res) => {
     try {
       // Quick database check
       await storage.getSettings();
       res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
     } catch (error) {
       console.error("Health check failed:", error);
-      res.status(503).json({ status: "error", message: "Service unavailable" });
+      res.status(503).json({ status: "error", message: getErrorMessage(req, 'serviceUnavailable') });
     }
   });
 
   // Create payment session before redirecting to Digiseller
   app.post("/api/payment/create-session", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     try {
@@ -132,13 +273,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const digisellerProductId = productIdMap[packageId];
       if (!digisellerProductId) {
-        return res.status(400).json({ error: "Invalid package ID" });
+        return res.status(400).json({ error: getErrorMessage(req, 'invalidPackageId') });
       }
 
       // Get user
       const user = await storage.getUser(req.session.userId);
       if (!user) {
-        return res.status(404).json({ error: "User not found" });
+        return res.status(404).json({ error: getErrorMessage(req, 'userNotFound') });
       }
 
       // Create pending transaction
@@ -158,7 +299,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       console.error("Create payment session error:", error);
-      res.status(500).json({ error: "Failed to create payment session" });
+      res.status(500).json({ error: getErrorMessage(req, 'failedToCreatePaymentSession') });
     }
   });
 
@@ -267,7 +408,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             calculated: calculatedSign,
             dataToSign: dataToSign
           });
-          return res.status(403).json({ error: "Invalid signature" });
+          return res.status(403).json({ error: getErrorMessage(req, 'invalidSignature') });
         }
         console.log("✅ Signature verified successfully");
       }
@@ -276,7 +417,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const existingTransaction = await storage.getTransactionByInvoiceId(finalInvId);
       if (existingTransaction && existingTransaction.status === "completed") {
         console.log("Transaction already processed:", finalInvId);
-        return res.status(200).json({ status: "ok", message: "Already processed" });
+        return res.status(200).json({ status: "ok", message: getErrorMessage(req, 'alreadyProcessed') });
       }
 
       // Map product IDs to bid packages (UPDATED to match frontend URLs)
@@ -301,8 +442,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
           console.error(`  "${key}" === "${productIdStr}": ${key === productIdStr}`);
           console.error(`  "${key}" == "${productIdStr}": ${key == productIdStr}`);
         });
-        return res.status(400).json({ 
-          error: "Unknown product ID: " + productIdStr,
+        return res.status(400).json({
+          error: getErrorMessage(req, 'unknownProductId') + ": " + productIdStr,
           original_value: finalProductId,
           received_type: typeof finalProductId,
           available_products: Object.keys(bidPackages)
@@ -344,7 +485,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           product_id: productIdStr 
         });
         return res.status(400).json({ 
-          error: "Could not match payment to user",
+          error: getErrorMessage(req, 'couldNotMatchPaymentToUser'),
           details: "User ID not found in payment data"
         });
       }
@@ -406,7 +547,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(200).json({ status: "ok" });
     } catch (error) {
       console.error("❌ Webhook processing error:", error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: getErrorMessage(req, 'internalServerError') });
     }
   });
 
@@ -423,7 +564,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Manual balance refresh endpoint (for testing/support)
   app.post("/api/payment/refresh-balance", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     try {
@@ -437,15 +578,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const transaction = await storage.getTransaction(transactionId);
       
       if (!transaction) {
-        return res.status(404).json({ error: "Transaction not found" });
+        return res.status(404).json({ error: getErrorMessage(req, 'transactionNotFound') });
       }
 
       if (transaction.userId !== req.session.userId) {
-        return res.status(403).json({ error: "Access denied" });
+        return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
       }
 
       if (transaction.status === "completed") {
-        return res.json({ message: "Transaction already completed", status: "completed" });
+        return res.json({ message: getErrorMessage(req, 'transactionAlreadyCompleted'), status: "completed" });
       }
 
       // Complete the transaction
@@ -460,13 +601,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(`Manual balance refresh: added ${transaction.bidsAmount} bids to user ${transaction.userId}`);
 
       res.json({ 
-        message: "Balance updated successfully", 
+        message: getErrorMessage(req, 'balanceUpdatedSuccessfully'), 
         bidsAdded: transaction.bidsAmount,
         status: "completed" 
       });
     } catch (error) {
       console.error("Manual balance refresh error:", error);
-      res.status(500).json({ error: "Failed to refresh balance" });
+      res.status(500).json({ error: getErrorMessage(req, 'failedToRefreshBalance') });
     }
   });
 
@@ -546,7 +687,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const existingUser = await storage.getUserByPhone(phone);
       if (existingUser) {
-        return res.status(400).json({ error: "Phone number already registered" });
+        return res.status(400).json({ error: getErrorMessage(req, 'phoneAlreadyRegistered') });
       }
 
       // Get client IP for rate limiting
@@ -556,7 +697,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const result = await otpService.createAndSendOtp(phone, 'registration', ipAddress);
       
       if (!result) {
-        return res.status(500).json({ error: "Failed to send OTP. Please try again." });
+        return res.status(500).json({ error: getErrorMessage(req, 'failedToSendOtp') });
       }
 
       res.json({ 
@@ -570,7 +711,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error.errors) {
         return res.status(400).json({ error: error.errors[0].message });
       }
-      res.status(500).json({ error: "Failed to send OTP" });
+      res.status(500).json({ error: getErrorMessage(req, 'failedToSendOtp') });
     }
   });
 
@@ -602,7 +743,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.json({ 
         success: true, 
-        message: "Phone number verified successfully",
+        message: getErrorMessage(req, 'phoneNumberVerifiedSuccessfully'),
         verifiedPhone: result.verifiedPhone,
       });
     } catch (error: any) {
@@ -610,7 +751,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error.errors) {
         return res.status(400).json({ error: error.errors[0].message });
       }
-      res.status(500).json({ error: "Failed to verify OTP" });
+      res.status(500).json({ error: getErrorMessage(req, 'failedToVerifyOtp') });
     }
   });
 
@@ -647,16 +788,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const otpVerification = await storage.getOtpVerificationById(registerData.verificationId);
           
           if (!otpVerification) {
-            return res.status(400).json({ error: "Invalid or expired verification ID" });
+            return res.status(400).json({ error: getErrorMessage(req, 'invalidOrExpiredVerificationId') });
           }
 
           // Validate OTP verification record
           if (otpVerification.phone !== registerData.phone) {
-            return res.status(400).json({ error: "Phone number does not match verification" });
+            return res.status(400).json({ error: getErrorMessage(req, 'phoneNumberDoesNotMatchVerification') });
           }
 
           if (otpVerification.purpose !== "registration") {
-            return res.status(400).json({ error: "Invalid verification purpose" });
+            return res.status(400).json({ error: getErrorMessage(req, 'invalidVerificationPurpose') });
           }
 
           if (!otpVerification.consumedAt) {
@@ -664,7 +805,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           }
 
           if (new Date() > otpVerification.expiresAt) {
-            return res.status(400).json({ error: "Verification has expired" });
+            return res.status(400).json({ error: getErrorMessage(req, 'verificationHasExpired') });
           }
 
           // Check if consumedAt is within acceptable time window (10 minutes)
@@ -674,7 +815,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const tenMinutesInMs = 10 * 60 * 1000;
           
           if (timeDifference > tenMinutesInMs) {
-            return res.status(400).json({ error: "Verification has expired. Please request a new OTP" });
+            return res.status(400).json({ error: getErrorMessage(req, 'verificationExpiredRequestNewOtp') });
           }
 
           phoneVerified = true;
@@ -683,7 +824,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         else {
           const verifiedPhone = (req.session as any).verifiedPhone;
           if (!verifiedPhone || verifiedPhone !== registerData.phone) {
-            return res.status(400).json({ error: "Phone number must be verified with OTP before registration" });
+            return res.status(400).json({ error: getErrorMessage(req, 'phoneNumberMustBeVerifiedWithOtp') });
           }
           phoneVerified = true;
         }
@@ -706,7 +847,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           : age;
         
         if (actualAge < 18) {
-          return res.status(400).json({ error: "Вам должно быть минимум 18 лет для регистрации" });
+          return res.status(400).json({ error: getErrorMessage(req, 'mustBe18OrOlder') });
         }
       }
 
@@ -763,7 +904,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       req.session.save((err) => {
         if (err) {
           console.error("Session save error:", err);
-          return res.status(500).json({ error: "Session error" });
+          return res.status(500).json({ error: getErrorMessage(req, 'sessionError') });
         }
         console.log("Session saved successfully! Session ID:", req.sessionID, "User ID:", req.session.userId);
         console.log("Session cookie being set:", req.session.cookie);
@@ -853,7 +994,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       req.session.save((err) => {
         if (err) {
           console.error("Session save error:", err);
-          return res.status(500).json({ error: "Session error" });
+          return res.status(500).json({ error: getErrorMessage(req, 'sessionError') });
         }
         console.log("Session saved successfully! Session ID:", req.sessionID, "User ID:", req.session.userId);
         console.log("Session cookie being set:", req.session.cookie);
@@ -902,7 +1043,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Verify JWT signature and expiration
       const payload = verifyRefreshToken(refreshToken);
       if (!payload) {
-        return res.status(401).json({ error: "Invalid or expired refresh token" });
+        return res.status(401).json({ error: getErrorMessage(req, 'invalidOrExpiredRefreshToken') });
       }
 
       // Get all non-revoked tokens for this user and find matching one
@@ -925,7 +1066,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       if (!storedToken) {
-        return res.status(401).json({ error: "Refresh token not found or has been revoked" });
+        return res.status(401).json({ error: getErrorMessage(req, 'refreshTokenNotFoundOrRevoked') });
       }
 
       // Get user to generate new tokens
@@ -978,7 +1119,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       });
     } catch (error) {
-      res.status(400).json({ error: "Invalid request" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidRequest') });
     }
   });
 
@@ -1065,7 +1206,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/auctions/:id", async (req, res) => {
     const auction = await storage.getAuction(req.params.id);
     if (!auction) {
-      return res.status(404).json({ error: "Аукцион не найден" });
+      return res.status(404).json({ error: getErrorMessage(req, 'auctionNotFound') });
     }
     res.json(auction);
   });
@@ -1087,14 +1228,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     const auction = allAuctions.find(a => createSlug(a.title, a.displayId) === req.params.slug);
     if (!auction) {
-      return res.status(404).json({ error: "Аукцион не найден" });
+      return res.status(404).json({ error: getErrorMessage(req, 'auctionNotFound') });
     }
     res.json(auction);
   });
 
   app.post("/api/auctions", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1102,19 +1243,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const auction = await storage.createAuction(auctionData);
       res.json(auction);
     } catch (error) {
-      res.status(400).json({ error: "Неверные данные аукциона" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidAuctionData') });
     }
   });
 
   app.post("/api/auctions/:id/bid", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     const success = await auctionService.placeBid(req.params.id, req.session.userId);
     
     if (!success) {
-      return res.status(400).json({ error: "Не удалось сделать ставку" });
+      return res.status(400).json({ error: getErrorMessage(req, 'failedToPlaceBid') });
     }
 
     // Broadcast bid update
@@ -1129,7 +1270,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/auctions/:id/prebid", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     const result = await auctionService.placePrebid(req.params.id, req.session.userId);
@@ -1149,7 +1290,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/bids/user", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
     
     const bids = await storage.getUserBids(req.session.userId, 50);
@@ -1158,7 +1299,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/prebids/user", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
     
     const prebids = await storage.getUserPrebids(req.session.userId, 50);
@@ -1198,7 +1339,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     const auction = allAuctions.find(a => createSlug(a.title, a.displayId) === req.params.slug);
     if (!auction) {
-      return res.status(404).json({ error: "Аукцион не найден" });
+      return res.status(404).json({ error: getErrorMessage(req, 'auctionNotFound') });
     }
     
     const bids = await storage.getBidsForAuction(auction.id);
@@ -1225,7 +1366,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     const auction = await storage.getAuction(req.params.id);
     if (!auction) {
-      return res.status(404).json({ error: "Аукцион не найден" });
+      return res.status(404).json({ error: getErrorMessage(req, 'auctionNotFound') });
     }
 
     const stats = {
@@ -1260,7 +1401,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     const auction = allAuctions.find(a => createSlug(a.title, a.displayId) === req.params.slug);
     if (!auction) {
-      return res.status(404).json({ error: "Аукцион не найден" });
+      return res.status(404).json({ error: getErrorMessage(req, 'auctionNotFound') });
     }
     
     const allBids = await storage.getBidsForAuction(auction.id);
@@ -1278,7 +1419,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // User stats
   app.get("/api/users/stats", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     const stats = await storage.getUserStats(req.session.userId);
@@ -1288,7 +1429,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Comprehensive user bid history API for mobile
   app.get("/api/users/bid-history", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     // Get user's regular bids
@@ -1369,12 +1510,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // User profile
   app.get("/api/users/profile", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     const user = await storage.getUser(req.session.userId);
     if (!user) {
-      return res.status(404).json({ error: "Пользователь не найден" });
+      return res.status(404).json({ error: getErrorMessage(req, 'userNotFound') });
     }
 
     res.json(user);
@@ -1382,7 +1523,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.put("/api/users/profile", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     try {
@@ -1402,7 +1543,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const updatedUser = await storage.updateUser(req.session.userId, updateData);
       if (!updatedUser) {
-        return res.status(404).json({ error: "Пользователь не найден" });
+        return res.status(404).json({ error: getErrorMessage(req, 'userNotFound') });
       }
 
       res.json(updatedUser);
@@ -1411,14 +1552,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error.errors) {
         return res.status(400).json({ error: error.errors[0].message });
       }
-      res.status(400).json({ error: "Неверные данные" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidData') });
     }
   });
 
   // User won auctions
   app.get("/api/users/won-auctions", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     const wonAuctions = await storage.getUserWonAuctions(req.session.userId);
@@ -1428,7 +1569,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // User recent bids
   app.get("/api/users/recent-bids", authenticateJWT, async (req, res) => {
     if (!req.session.userId) {
-      return res.status(401).json({ error: "Не авторизован" });
+      return res.status(401).json({ error: getErrorMessage(req, 'unauthorized') });
     }
 
     const recentBids = await storage.getUserRecentBids(req.session.userId);
@@ -1438,7 +1579,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Admin routes
   app.get("/api/admin/bot-settings", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     const settings = await storage.getBotSettings();
@@ -1447,21 +1588,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.put("/api/admin/bot-settings", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
       const settings = await storage.updateBotSettings(req.body);
       res.json(settings);
     } catch (error) {
-      res.status(400).json({ error: "Неверные настройки" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidSettings') });
     }
   });
 
   // Admin auction management routes
   app.get("/api/admin/auctions", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     const auctions = await storage.getAllAuctions();
@@ -1470,7 +1611,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/admin/finished-auctions", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     const finishedAuctions = await storage.getAuctionsByStatus("finished");
@@ -1505,7 +1646,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/admin/auction-stats/:id", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1513,13 +1654,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(stats);
     } catch (error) {
       console.error("Error fetching auction stats:", error);
-      res.status(500).json({ error: "Ошибка при получении статистики аукциона" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorFetchingAuctionStats') });
     }
   });
 
   app.delete("/api/admin/auctions/:id", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1529,13 +1670,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true });
     } catch (error) {
       console.error("Error deleting auction:", error);
-      res.status(500).json({ error: "Ошибка при удалении аукциона" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorDeletingAuction') });
     }
   });
 
   app.post("/api/admin/auctions", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1554,13 +1695,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(auction);
     } catch (error) {
       console.error("Auction validation error:", error);
-      res.status(400).json({ error: "Неверные данные аукциона" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidAuctionData') });
     }
   });
 
   app.put("/api/admin/auctions/:id", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1578,13 +1719,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(auction);
     } catch (error) {
       console.error("Auction update validation error:", error);
-      res.status(400).json({ error: "Неверные данные аукциона" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidAuctionData') });
     }
   });
 
   app.delete("/api/admin/auctions/:id", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1594,13 +1735,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true });
     } catch (error) {
       console.error("Error deleting auction:", error);
-      res.status(500).json({ error: "Ошибка при удалении аукциона" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorDeletingAuction') });
     }
   });
 
   app.post("/api/admin/auctions/:id/start", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1608,13 +1749,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true });
     } catch (error) {
       console.error("Error starting auction:", error);
-      res.status(500).json({ error: "Ошибка при запуске аукциона" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorStartingAuction') });
     }
   });
 
   app.post("/api/admin/auctions/:id/end", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     await auctionService.endAuction(req.params.id);
@@ -1624,7 +1765,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Bot management routes (Admin only)
   app.get("/api/admin/bots", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
     
     const bots = await botService.getAllBots();
@@ -1633,7 +1774,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/admin/bots", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1642,13 +1783,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(bot);
     } catch (error) {
       console.error("Bot creation error:", error);
-      res.status(400).json({ error: "Неверные данные бота" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidBotData') });
     }
   });
 
   app.put("/api/admin/bots/:id", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1657,13 +1798,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(bot);
     } catch (error) {
       console.error("Bot update error:", error);
-      res.status(400).json({ error: "Неверные данные бота" });
+      res.status(400).json({ error: getErrorMessage(req, 'invalidBotData') });
     }
   });
 
   app.delete("/api/admin/bots/:id", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     await botService.deleteBot(req.params.id);
@@ -1673,7 +1814,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Auction bot management routes
   app.get("/api/admin/auctions/:auctionId/bots", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
     
     const auctionBots = await botService.getAuctionBots(req.params.auctionId);
@@ -1682,7 +1823,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/admin/auctions/:auctionId/bots", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     const { botId, bidLimit = 0 } = req.body;
@@ -1692,7 +1833,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.delete("/api/admin/auctions/:auctionId/bots/:botId", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     await botService.removeBotFromAuction(req.params.auctionId, req.params.botId);
@@ -1702,7 +1843,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get all bots with their current auction status
   app.get("/api/admin/bots/auction-status", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
     
     try {
@@ -1710,14 +1851,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(botsWithStatus);
     } catch (error) {
       console.error("Error fetching bots with auction status:", error);
-      res.status(500).json({ error: "Failed to fetch bots with auction status" });
+      res.status(500).json({ error: getErrorMessage(req, 'failedToFetchBots') });
     }
   });
 
   // Admin user management routes
   app.get("/api/admin/users", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1736,13 +1877,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(users);
     } catch (error) {
       console.error("Error fetching users:", error);
-      res.status(500).json({ error: "Ошибка при получении пользователей" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorFetchingUsers') });
     }
   });
 
   app.get("/api/admin/users/today-registrations", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1750,13 +1891,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ count: todayCount });
     } catch (error) {
       console.error("Error fetching today's registrations:", error);
-      res.status(500).json({ error: "Ошибка при получении данных о регистрациях" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorFetchingRegistrations') });
     }
   });
 
   app.get("/api/admin/users/:id/activity", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1765,14 +1906,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(activity);
     } catch (error) {
       console.error("Error fetching user activity:", error);
-      res.status(500).json({ error: "Ошибка при получении активности пользователя" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorFetchingUserActivity') });
     }
   });
 
   // Update user
   app.patch("/api/admin/users/:userId", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1794,14 +1935,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error.errors) {
         return res.status(400).json({ error: error.errors[0].message });
       }
-      res.status(500).json({ error: "Ошибка при обновлении пользователя" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorUpdatingUser') });
     }
   });
 
   // Delete user
   app.delete("/api/admin/users/:userId", async (req, res) => {
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1809,21 +1950,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Prevent admin from deleting themselves
       if (userId === req.session.userId) {
-        return res.status(400).json({ error: "Нельзя удалить собственный аккаунт" });
+        return res.status(400).json({ error: getErrorMessage(req, 'cannotDeleteOwnAccount') });
       }
 
       await storage.deleteUser(userId);
       res.json({ success: true });
     } catch (error) {
       console.error("Error deleting user:", error);
-      res.status(500).json({ error: "Ошибка при удалении пользователя" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorDeletingUser') });
     }
   });
 
   // Admin Settings routes
   app.get("/api/admin/settings", async (req, res) => {
+    console.log("GET /api/admin/settings - Session:", {
+      sessionId: req.sessionID,
+      userId: req.session.userId,
+      userRole: req.session.userRole,
+      hasSession: !!req.session,
+    });
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1831,13 +1978,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(settings);
     } catch (error) {
       console.error("Error fetching settings:", error);
-      res.status(500).json({ error: "Ошибка при получении настроек" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorFetchingSettings') });
     }
   });
 
   app.put("/api/admin/settings", async (req, res) => {
+    console.log("PUT /api/admin/settings - Session:", {
+      sessionId: req.sessionID,
+      userId: req.session.userId,
+      userRole: req.session.userRole,
+      hasSession: !!req.session,
+    });
     if (req.session.userRole !== "admin") {
-      return res.status(403).json({ error: "Доступ запрещен" });
+      return res.status(403).json({ error: getErrorMessage(req, 'forbidden') });
     }
 
     try {
@@ -1849,7 +2002,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error.errors) {
         return res.status(400).json({ error: error.errors[0].message });
       }
-      res.status(500).json({ error: "Ошибка при обновлении настроек" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorUpdatingSettings') });
     }
   });
 
@@ -1860,7 +2013,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(settings);
     } catch (error) {
       console.error("Error fetching public settings:", error);
-      res.status(500).json({ error: "Ошибка при получении настроек" });
+      res.status(500).json({ error: getErrorMessage(req, 'errorFetchingSettings') });
     }
   });
 
@@ -1915,7 +2068,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       console.error("Error fetching timer details:", error);
-      res.status(500).json({ error: "Failed to fetch timer details" });
+      res.status(500).json({ error: getErrorMessage(req, 'failedToFetchTimerDetails') });
     }
   });
 
