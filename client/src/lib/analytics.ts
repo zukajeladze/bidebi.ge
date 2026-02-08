@@ -1,4 +1,4 @@
-import { hasConsentedToAnalytics } from './cookie-utils';
+import { hasConsentedToAnalytics, hasConsentedToMarketing } from './cookie-utils';
 
 // Define global tracking functions
 declare global {
@@ -41,6 +41,49 @@ export const initGA = () => {
   document.head.appendChild(script2);
 };
 
+// Initialize Facebook Pixel only if user has consented to marketing cookies
+export const initFacebookPixel = () => {
+  if (!hasConsentedToMarketing()) {
+    console.log('Marketing cookies not consented, skipping Facebook Pixel initialization');
+    return;
+  }
+
+  const pixelId = import.meta.env.VITE_FB_PIXEL_ID;
+  if (!pixelId) {
+    console.warn('Missing required Facebook Pixel key: VITE_FB_PIXEL_ID');
+    return;
+  }
+
+  if (typeof window === 'undefined') return;
+
+  if (!window.fbq) {
+    const inlineScript = document.createElement('script');
+    inlineScript.textContent = `
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;
+        n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;
+        n.push=n;
+        n.loaded=!0;
+        n.version='2.0';
+        n.queue=[];
+        t=b.createElement(e);
+        t.async=!0;
+        t.src=v;
+        s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '${pixelId}');
+      fbq('track', 'PageView');
+    `;
+    document.head.appendChild(inlineScript);
+    return;
+  }
+
+  window.fbq('init', pixelId);
+  window.fbq('track', 'PageView');
+};
+
 // Track page views - useful for single-page applications
 export const trackPageView = (url: string) => {
   if (typeof window === 'undefined' || !window.gtag || !hasConsentedToAnalytics()) return;
@@ -51,6 +94,11 @@ export const trackPageView = (url: string) => {
   window.gtag('config', measurementId, {
     page_path: url
   });
+
+  // Track SPA navigation for Meta Pixel too (if enabled)
+  if (window.fbq && hasConsentedToMarketing()) {
+    window.fbq('track', 'PageView');
+  }
 };
 
 // Track events
@@ -72,7 +120,7 @@ export const trackEvent = (
   }
   
   // Track with Facebook Pixel
-  if (window.fbq) {
+  if (window.fbq && hasConsentedToMarketing()) {
     window.fbq('track', action, {
       event_category: category,
       event_label: label,
@@ -83,7 +131,7 @@ export const trackEvent = (
 
 // Facebook Pixel specific tracking functions
 export const trackFacebookEvent = (eventName: string, parameters?: any) => {
-  if (typeof window === 'undefined' || !window.fbq || !hasConsentedToAnalytics()) return;
+  if (typeof window === 'undefined' || !window.fbq || !hasConsentedToMarketing()) return;
   
   if (parameters) {
     window.fbq('track', eventName, parameters);

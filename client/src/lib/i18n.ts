@@ -400,6 +400,7 @@ export const translations = {
     auctionsAwaitingStart: 'auctions awaiting start',
     pageOf: 'page',
     of: 'of',
+    upcomingAuctions: 'Upcoming Auctions',
     noUpcomingAuctions: 'No upcoming auctions',
     newAuctionsWillAppear: 'New auctions will appear here soon',
     admin: 'Admin',
@@ -967,7 +968,6 @@ export const translations = {
       'iPhone, MacBook, Samsung და სხვა ბრენდული ტექნიკა უნიკალური პენი-აუქციონის ფორმატით',
     cookieDescription:
       'ვებსაიტის მუშაობის გასაუმჯობესებლად და ტრაფიკის ანალიზისთვის.',
-    learnMore: 'იხილეთ მეტი',
     settings: 'პარამეტრები',
     onlyNecessary: 'მხოლოდ საჭირო',
     acceptAll: 'ყველას მიღება',
@@ -1128,6 +1128,7 @@ export const translations = {
     auctionsAwaitingStart: 'აუქციონი ელოდება დაწყებას',
     pageOf: 'გვერდი',
     of: 'დან',
+    upcomingAuctions: 'მომავალი აუქციონები',
     noUpcomingAuctions: 'არ არის მომავალი აუქციონები',
     newAuctionsWillAppear: 'ახალი აუქციონები მალე გამოჩნდება აქ',
     admin: 'ადმინი',

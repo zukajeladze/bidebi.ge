@@ -28,7 +28,7 @@ import { Footer } from "@/components/footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { useAnalytics } from "@/hooks/use-analytics";
 import { useEffect, useState } from "react";
-import { initGA } from "./lib/analytics";
+import { initFacebookPixel, initGA } from "./lib/analytics";
 import { WelcomeModal } from "@/components/welcome-modal";
 import { CookieBanner } from "@/components/cookie-banner";
 import { useSettings } from "@/hooks/use-settings";
@@ -84,12 +84,8 @@ function Router() {
 function App() {
   // Initialize Google Analytics when app loads
   useEffect(() => {
-    // Verify required environment variable is present
-    if (!import.meta.env.VITE_GA_MEASUREMENT_ID) {
-      console.warn('Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID');
-    } else {
-      initGA();
-    }
+    initGA();
+    initFacebookPixel();
   }, []);
 
   return (

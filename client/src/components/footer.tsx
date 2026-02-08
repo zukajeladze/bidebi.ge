@@ -15,13 +15,11 @@ export function Footer() {
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                 <i className="fas fa-gavel text-white text-sm"></i>
               </div>
-              <h3 className="text-xl font-bold text-white">
-                {settings?.siteName || 'bidebi.ge.GE'}
-              </h3>
+              <h3 className="text-xl font-bold text-white">{'BIDEBI.GE'}</h3>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               {settings?.footerDescription ||
-                'Первая пенни-аукционная платформа в России. Выигрывайте премиальные товары за копейки с нашей честной и прозрачной системой аукционов.'}
+                'პირველი პენი-აუქციონი საქართველოში. მოიგეთ პრემიუმ ნივთები ჩვენი სამართლიანი და გამჭვირვალე აუქციონით.'}
             </p>
             <div className="flex space-x-4">
               <a
@@ -213,7 +211,7 @@ export function Footer() {
         {/* Trust Indicators */}
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-6 mb-4 md:mb-0">
+            <div className="flex flex-col gap-3 md:flex-row items-center space-x-6 mb-4 md:mb-0">
               <div className="flex items-center text-green-400 text-sm">
                 <i className="fas fa-shield-check mr-2"></i>
                 <span>{t('securePayments')}</span>

@@ -128,7 +128,7 @@ export default function HowItWorks() {
                     {t('exampleRetailPrice')}
                   </span>
                   <span className="text-red-600 line-through">
-                    {formatCurrency(150000)}
+                    {formatCurrency(4000)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center border-t pt-2">
